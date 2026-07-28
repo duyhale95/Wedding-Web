@@ -19,13 +19,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 // 3 ảnh
-window.addEventListener('scroll', () => 
-{
-    document.querySelectorAll('.img_small').forEach(el => 
-    {
+window.addEventListener('scroll', () => {
+    document.querySelectorAll('.img_small').forEach(el => {
         const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom > 0)
-        {
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
             // el.classList.add('album_hihi');
             el.classList.remove('js_left');
             el.classList.remove('js_right');
@@ -71,13 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // ani album
-window.addEventListener('scroll', () => 
-{
-    document.querySelectorAll('.js_album').forEach(el => 
-    {
+window.addEventListener('scroll', () => {
+    document.querySelectorAll('.js_album').forEach(el => {
         const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom > 0)
-        {
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
             // el.classList.add('album_hihi');
             el.classList.remove('album_left');
             el.classList.remove('album_right');
@@ -148,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
             audio.play().then(() => {
                 updateBtnState();
                 removeListeners();
-            }).catch(() => {});
+            }).catch(() => { });
         }
     };
 
@@ -376,10 +370,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-  
-  
 
 
 
 
-  
+
+

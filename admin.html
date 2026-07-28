@@ -339,8 +339,11 @@
             const baseUrlInput = document.getElementById('baseUrlInput');
             const toast = document.getElementById('toast');
 
-            // Tự động nhận URL gốc hiện tại (ví dụ: http://localhost:8080/index.html)
-            const defaultUrl = window.location.href.replace(/admin\.html.*$/, 'index.html');
+            // Tự động nhận URL gốc thiệp cưới hiện tại (trỏ về trang chủ thiệp)
+            let defaultUrl = window.location.origin + window.location.pathname.replace(/\/admin(\.html)?\/?$/, '/');
+            if (!defaultUrl.endsWith('/')) {
+                defaultUrl += '/';
+            }
             baseUrlInput.value = defaultUrl;
 
             function showToast(msg) {
