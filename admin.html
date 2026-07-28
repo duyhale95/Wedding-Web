@@ -3,69 +3,144 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Quản Lý Tạo Link Thiệp Cưới | Lê Vy & Hoài Bảo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap"
         rel="stylesheet">
+    <link rel="icon" href="source/favicon.png" type="image/png">
 
     <style>
+        :root {
+            --bg-main: #f9f5f0;
+            --card-bg: #ffffff;
+            --text-dark: #3a2b22;
+            --text-muted: #7d6859;
+            --border-gold: rgba(196, 160, 71, 0.35);
+            --nhatrai-gradient: linear-gradient(135deg, #a22a2d 0%, #761618 100%);
+            --nhatrai-hover: linear-gradient(135deg, #882124 0%, #5d1012 100%);
+            --nhagai-gradient: linear-gradient(135deg, #d9777f 0%, #b8525b 100%);
+            --nhagai-hover: linear-gradient(135deg, #c4646c 0%, #9e3e46 100%);
+            --btn-neutral: linear-gradient(135deg, #735d4f 0%, #594436 100%);
+            --shadow-card: 0 15px 35px rgba(58, 43, 34, 0.08), 0 5px 15px rgba(0, 0, 0, 0.03);
+            --radius-main: 20px;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
-            background: #f4efe9;
-            color: #3b281c;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-main);
+            color: var(--text-dark);
             min-height: 100vh;
-            padding: 30px 15px;
+            padding: 24px 14px;
             display: flex;
             justify-content: center;
+            align-items: flex-start;
+            -webkit-font-smoothing: antialiased;
         }
 
         .admin_container {
             width: 100%;
-            max-width: 850px;
-            background: #ffffff;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(90, 70, 55, 0.12);
-            border: 1px solid rgba(196, 160, 71, 0.35);
-            padding: 35px 30px;
+            max-width: 860px;
+            background: var(--card-bg);
+            border-radius: var(--radius-main);
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--border-gold);
+            padding: 32px 28px;
+            margin: 0 auto;
         }
 
+        /* Header */
         .header {
             text-align: center;
-            margin-bottom: 30px;
-            border-bottom: 1px dashed #d8c8b8;
-            padding-bottom: 20px;
+            margin-bottom: 28px;
+            border-bottom: 1px dashed #e5d8cb;
+            padding-bottom: 22px;
+            position: relative;
+        }
+
+        .header_flourish {
+            color: #c4a047;
+            font-size: 20px;
+            margin-bottom: 4px;
         }
 
         .header h1 {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 26px;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(20px, 5vw, 26px);
             color: #5c4737;
-            letter-spacing: 1px;
+            letter-spacing: 0.8px;
+            font-weight: 700;
             margin-bottom: 6px;
         }
 
         .header p {
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            font-size: 18px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(16px, 4vw, 19px);
             color: #8c7360;
             font-style: italic;
         }
 
+        /* Quick Action Section */
+        .quick_access_grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-bottom: 26px;
+        }
+
+        .quick_card {
+            background: #faf6f1;
+            border: 1px solid #ebdccb;
+            border-radius: 14px;
+            padding: 18px;
+            transition: all 0.25s ease;
+        }
+
+        .quick_card:hover {
+            box-shadow: 0 8px 20px rgba(90, 70, 55, 0.08);
+            border-color: #d8c3b0;
+        }
+
+        .quick_card_title {
+            font-size: 13.5px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            letter-spacing: 0.3px;
+        }
+
+        .quick_card.nhatrai_card .quick_card_title {
+            color: #a22a2d;
+        }
+
+        .quick_card.nhagai_card .quick_card_title {
+            color: #b8525b;
+        }
+
+        .quick_btn_row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        /* Form section */
         .form_section {
-            background: #faf6f0;
+            background: #faf6f1;
             border: 1px solid #ebdccb;
             border-radius: 14px;
             padding: 22px;
-            margin-bottom: 25px;
+            margin-bottom: 24px;
         }
 
         .section_title {
@@ -95,17 +170,18 @@
             width: 100%;
             padding: 12px 14px;
             border: 1px solid #d4c1af;
-            border-radius: 8px;
+            border-radius: 9px;
             font-family: inherit;
             font-size: 14px;
             outline: none;
-            transition: border-color 0.2s, box-shadow 0.2s;
+            transition: all 0.2s ease;
             background: #ffffff;
+            color: var(--text-dark);
         }
 
         .input_control:focus {
             border-color: #a68461;
-            box-shadow: 0 0 0 3px rgba(166, 132, 97, 0.15);
+            box-shadow: 0 0 0 3px rgba(166, 132, 97, 0.16);
         }
 
         textarea.input_control {
@@ -114,28 +190,48 @@
             line-height: 1.5;
         }
 
+        /* Buttons */
         .btn {
-            background: linear-gradient(135deg, #735d4f 0%, #594436 100%);
+            background: var(--btn-neutral);
             color: #ffffff;
             border: none;
-            padding: 12px 22px;
+            padding: 11px 20px;
             font-family: 'Playfair Display', serif;
-            font-size: 14px;
+            font-size: 13.5px;
             font-weight: 600;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.4px;
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.25s ease;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 6px;
-            box-shadow: 0 4px 12px rgba(90, 70, 55, 0.2);
+            box-shadow: 0 4px 12px rgba(90, 70, 55, 0.15);
+            text-decoration: none;
+            min-height: 40px;
         }
 
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(90, 70, 55, 0.3);
-            background: linear-gradient(135deg, #594436 0%, #423023 100%);
+            box-shadow: 0 6px 16px rgba(90, 70, 55, 0.25);
+            opacity: 0.95;
+        }
+
+        .btn_nhatrai {
+            background: var(--nhatrai-gradient);
+        }
+
+        .btn_nhatrai:hover {
+            background: var(--nhatrai-hover);
+        }
+
+        .btn_nhagai {
+            background: var(--nhagai-gradient);
+        }
+
+        .btn_nhagai:hover {
+            background: var(--nhagai-hover);
         }
 
         .btn_secondary {
@@ -150,15 +246,17 @@
         }
 
         .btn_sm {
-            padding: 7px 12px;
+            padding: 7px 13px;
             font-size: 12.5px;
+            min-height: 34px;
             border-radius: 6px;
         }
 
+        /* Tabs */
         .tab_buttons {
             display: flex;
             gap: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
             border-bottom: 2px solid #eae0d5;
             padding-bottom: 10px;
         }
@@ -169,26 +267,36 @@
             font-size: 14.5px;
             font-weight: 600;
             color: #8c7360;
-            padding: 8px 16px;
+            padding: 9px 18px;
             cursor: pointer;
-            border-radius: 6px;
+            border-radius: 8px;
             transition: all 0.2s ease;
         }
 
         .tab_btn.active {
             background: #735d4f;
             color: #ffffff;
+            box-shadow: 0 4px 12px rgba(115, 93, 79, 0.2);
+        }
+
+        /* Table */
+        .table_wrapper {
+            width: 100%;
+            overflow-x: auto;
+            border-radius: 10px;
+            border: 1px solid #eae0d5;
         }
 
         .results_table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 15px;
+            background: #ffffff;
+            min-width: 600px;
         }
 
         .results_table th,
         .results_table td {
-            padding: 12px;
+            padding: 12px 14px;
             text-align: left;
             border-bottom: 1px solid #eae0d5;
             font-size: 13.5px;
@@ -205,8 +313,8 @@
         }
 
         .url_text {
-            font-family: monospace;
-            font-size: 12.5px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 12px;
             color: #594233;
             word-break: break-all;
         }
@@ -217,23 +325,24 @@
             right: 25px;
             background: #3b281c;
             color: #ffffff;
-            padding: 12px 20px;
-            border-radius: 8px;
+            padding: 12px 22px;
+            border-radius: 10px;
             font-size: 13.5px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+            font-weight: 500;
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
             display: none;
             z-index: 10000;
         }
 
         .toast.show {
             display: block;
-            animation: fadeIn 0.3s ease;
+            animation: fadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(10px);
+                transform: translateY(12px);
             }
 
             to {
@@ -245,7 +354,7 @@
         .badge_count {
             background: #735d4f;
             color: white;
-            padding: 2px 8px;
+            padding: 2px 9px;
             border-radius: 12px;
             font-size: 12px;
             margin-left: 6px;
@@ -255,7 +364,33 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 15px;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .admin_container {
+                padding: 20px 16px;
+            }
+
+            .tab_buttons {
+                flex-direction: column;
+                gap: 6px;
+            }
+
+            .tab_btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .quick_btn_row .btn {
+                width: calc(50% - 4px);
+            }
         }
     </style>
 </head>
@@ -263,71 +398,63 @@
 <body>
 
     <div class="admin_container">
+        <!-- Header -->
         <div class="header">
-            <h1>QUẢN LÝ LINK GỬI THIỆP CƯỚI</h1>
+            <div class="header_flourish">❦</div>
+            <h1>QUẢN LÝ TẠO LINK GỬI THIỆP CƯỚI</h1>
             <p>Dành riêng cho Gia đình Lê Vy & Hoài Bảo</p>
         </div>
 
-        <!-- Cấu hình Domain / Base URL -->
-        <div class="form_section">
-            <div class="section_title">🌐 Cấu hình Tên Domain Gốc (Base Domain)</div>
-            <div class="input_group">
-                <label for="baseUrlInput">Tên Domain Gốc của Website:</label>
-                <input type="text" id="baseUrlInput" class="input_control"
-                    placeholder="https://hoaibao-levy.vercel.app/" />
-                <span style="font-size: 11.5px; color: #8c7360; margin-top: 4px; display: block;">
-                    * Mặc định hệ thống tự nhận domain gốc. Link sẽ tự động ghép <strong>/nhatrai</strong> hoặc
-                    <strong>/nhagai</strong> khi xuất thiệp.
-                </span>
+        <!-- Khối Mở Trực Tiếp & Quick Copy (Không cần nhập domain) -->
+        <div class="quick_access_grid">
+            <!-- Card Nhà Trai -->
+            <div class="quick_card nhatrai_card">
+                <div class="quick_card_title">🔴 THIỆP NHÀ TRAI (LỄ THÀNH HÔN)</div>
+                <div class="quick_btn_row">
+                    <button id="btnOpenDirectNhatrai" class="btn btn_nhatrai btn_sm">🚀 Mở Web Nhà Trai</button>
+                    <button id="btnCopyDirectNhatrai" class="btn btn_secondary btn_sm">📋 Copy Link</button>
+                </div>
             </div>
 
-            <!-- Link Xem Thiệp Trực Tiếp -->
-            <div
-                style="background: #ffffff; padding: 14px; border-radius: 10px; border: 1px solid #e5d8cb; margin-top: 14px;">
-                <div style="font-size: 13px; font-weight: 700; color: #594233; margin-bottom: 8px;">🚀 Xem Thiệp Trực
-                    Tiếp (Không cần tên khách):</div>
-                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                    <button id="btnCopyDirectNhatrai" class="btn btn_sm btn_secondary">📋 Copy Link Nhà Trai
-                        (/nhatrai)</button>
-                    <button id="btnCopyDirectNhagai" class="btn btn_sm btn_secondary">📋 Copy Link Nhà Gái
-                        (/nhagai)</button>
+            <!-- Card Nhà Gái -->
+            <div class="quick_card nhagai_card">
+                <div class="quick_card_title">🌸 THIỆP NHÀ GÁI (LỄ VU QUY)</div>
+                <div class="quick_btn_row">
+                    <button id="btnOpenDirectNhagai" class="btn btn_nhagai btn_sm">🌸 Mở Web Nhà Gái</button>
+                    <button id="btnCopyDirectNhagai" class="btn btn_secondary btn_sm">📋 Copy Link</button>
                 </div>
             </div>
         </div>
 
         <!-- Tab chuyển đổi -->
         <div class="tab_buttons">
-            <button id="tabSingleBtn" class="tab_btn active">Tạo 1 Khách</button>
-            <button id="tabBatchBtn" class="tab_btn">Tạo Hàng Loạt (Nhiều Khách)</button>
+            <button id="tabSingleBtn" class="tab_btn active">✉️ Tạo 1 Link Khách Mời</button>
+            <button id="tabBatchBtn" class="tab_btn">📝 Tạo Hàng Loạt (Nhiều Khách)</button>
         </div>
 
         <!-- Tab 1: Tạo đơn lẻ -->
         <div id="tabSingle" class="tab_content">
             <div class="form_section">
-                <div class="section_title">✉️ Tạo link gửi cho 1 khách mời</div>
+                <div class="section_title">✉️ Nhập tên khách mời gửi riêng:</div>
                 <div class="input_group">
                     <label for="singleGuestInput">Tên khách mời hiển thị trên thiệp:</label>
                     <input type="text" id="singleGuestInput" class="input_control"
                         placeholder="Ví dụ: Anh Nam & Chị Mai, Gia đình Bác Hùng..." />
                 </div>
-                <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px;">
-                    <button id="btnGenSingleNhatrai" class="btn"
-                        style="background: linear-gradient(135deg, #a22a2d 0%, #761618 100%);">🔴 Tạo Link Nhà
-                        Trai</button>
-                    <button id="btnGenSingleNhagai" class="btn"
-                        style="background: linear-gradient(135deg, #b8860b 0%, #8c6509 100%);">🌸 Tạo Link Nhà
-                        Gái</button>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px;">
+                    <button id="btnGenSingleNhatrai" class="btn btn_nhatrai">🔴 Tạo Link Nhà Trai</button>
+                    <button id="btnGenSingleNhagai" class="btn btn_nhagai">🌸 Tạo Link Nhà Gái</button>
                 </div>
             </div>
 
             <div id="singleResultBox" style="display: none;" class="form_section">
-                <div class="section_title">🎉 Đường link đã được tạo:</div>
+                <div class="section_title">🎉 Đường link đã được tạo thành công:</div>
                 <div class="input_group">
                     <input type="text" id="singleResultUrl" class="input_control url_text" readonly />
                 </div>
-                <div style="display: flex; gap: 10px;">
-                    <button id="btnCopySingle" class="btn btn_sm">📋 Chép Link</button>
-                    <button id="btnOpenSingle" class="btn btn_secondary btn_sm">🔗 Mở Xem Thử</button>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <button id="btnOpenSingle" class="btn btn_nhatrai btn_sm">🌐 Mở Web Thiệp (Tab Mới)</button>
+                    <button id="btnCopySingle" class="btn btn_secondary btn_sm">📋 Chép Link</button>
                 </div>
             </div>
         </div>
@@ -335,19 +462,15 @@
         <!-- Tab 2: Tạo hàng loạt -->
         <div id="tabBatch" class="tab_content" style="display: none;">
             <div class="form_section">
-                <div class="section_title">📝 Nhập danh sách nhiều khách mời</div>
+                <div class="section_title">📝 Nhập danh sách nhiều khách mời:</div>
                 <div class="input_group">
                     <label for="batchGuestsInput">Nhập mỗi khách mời trên 1 dòng:</label>
                     <textarea id="batchGuestsInput" class="input_control"
                         placeholder="Lớp Tin học K16&#10;Anh Nam & Chị Mai&#10;Gia đình Bác Hùng&#10;Bạn Hoàng (Đại học)"></textarea>
                 </div>
-                <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px;">
-                    <button id="btnGenBatchNhatrai" class="btn"
-                        style="background: linear-gradient(135deg, #a22a2d 0%, #761618 100%);">🔴 Tạo Tất Cả Link Nhà
-                        Trai</button>
-                    <button id="btnGenBatchNhagai" class="btn"
-                        style="background: linear-gradient(135deg, #b8860b 0%, #8c6509 100%);">🌸 Tạo Tất Cả Link Nhà
-                        Gái</button>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px;">
+                    <button id="btnGenBatchNhatrai" class="btn btn_nhatrai">🔴 Tạo Tất Cả Link Nhà Trai</button>
+                    <button id="btnGenBatchNhagai" class="btn btn_nhagai">🌸 Tạo Tất Cả Link Nhà Gái</button>
                 </div>
             </div>
 
@@ -356,21 +479,23 @@
                     <div class="section_title" style="margin: 0;">
                         📋 Danh sách link đã tạo <span id="badgeCountBadge" class="badge_count">0</span>
                     </div>
-                    <button id="btnCopyAllBatch" class="btn btn_secondary btn_sm">📋 Copy Tất Cả Link</button>
+                    <button id="btnCopyAllBatch" class="btn btn_secondary btn_sm">📋 Copy Toàn Bộ Link</button>
                 </div>
 
-                <table class="results_table">
-                    <thead>
-                        <tr>
-                            <th style="width: 50px;">STT</th>
-                            <th style="width: 220px;">Tên Khách Mời</th>
-                            <th>Link Gửi Riêng</th>
-                            <th style="width: 140px; text-align: center;">Thao Tác</th>
-                        </tr>
-                    </thead>
-                    <tbody id="batchTableBody">
-                    </tbody>
-                </table>
+                <div class="table_wrapper">
+                    <table class="results_table">
+                        <thead>
+                            <tr>
+                                <th style="width: 50px; text-align: center;">STT</th>
+                                <th style="width: 200px;">Tên Khách Mời</th>
+                                <th>Link Gửi Riêng</th>
+                                <th style="width: 170px; text-align: center;">Thao Tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="batchTableBody">
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -379,12 +504,16 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const baseUrlInput = document.getElementById('baseUrlInput');
             const toast = document.getElementById('toast');
 
-            // Tự động lấy Domain gốc chuẩn
-            let defaultUrl = window.location.origin + '/';
-            baseUrlInput.value = defaultUrl;
+            // Tự động nhận diện Domain chuẩn mà không cần nhập
+            function getBaseUrl() {
+                let origin = window.location.origin;
+                let path = window.location.pathname;
+                let cleanPath = path.replace(/\/(admin|admin\.html)?$/, '');
+                if (!cleanPath.endsWith('/')) cleanPath += '/';
+                return origin + cleanPath;
+            }
 
             function showToast(msg) {
                 toast.textContent = msg;
@@ -395,14 +524,8 @@
             }
 
             function buildLinkForSide(side, guestName) {
-                let base = baseUrlInput.value.trim();
-                if (!base) base = defaultUrl;
-                if (!base.endsWith('/')) base += '/';
-
-                let cleanDomain = base.replace(/(nhatrai|nhagai)(\.html)?\/?$/, '');
-                if (!cleanDomain.endsWith('/')) cleanDomain += '/';
-
-                const targetUrl = cleanDomain + side;
+                const base = getBaseUrl();
+                const targetUrl = base + side;
 
                 try {
                     const urlObj = new URL(targetUrl);
@@ -416,20 +539,27 @@
                 }
             }
 
-            // Quick Copy Direct Buttons
+            // Quick Direct Actions (Nhà Trai)
+            document.getElementById('btnOpenDirectNhatrai').addEventListener('click', () => {
+                const link = buildLinkForSide('nhatrai');
+                window.open(link, '_blank');
+            });
+
             document.getElementById('btnCopyDirectNhatrai').addEventListener('click', () => {
-                let base = baseUrlInput.value.trim() || defaultUrl;
-                if (!base.endsWith('/')) base += '/';
-                const link = base + 'nhatrai';
+                const link = buildLinkForSide('nhatrai');
                 navigator.clipboard.writeText(link).then(() => {
                     showToast('Đã chép link Nhà Trai: ' + link);
                 });
             });
 
+            // Quick Direct Actions (Nhà Gái)
+            document.getElementById('btnOpenDirectNhagai').addEventListener('click', () => {
+                const link = buildLinkForSide('nhagai');
+                window.open(link, '_blank');
+            });
+
             document.getElementById('btnCopyDirectNhagai').addEventListener('click', () => {
-                let base = baseUrlInput.value.trim() || defaultUrl;
-                if (!base.endsWith('/')) base += '/';
-                const link = base + 'nhagai';
+                const link = buildLinkForSide('nhagai');
                 navigator.clipboard.writeText(link).then(() => {
                     showToast('Đã chép link Nhà Gái: ' + link);
                 });
@@ -477,7 +607,7 @@
                 navigator.clipboard.writeText(link).then(() => {
                     showToast(`Đã tạo & chép link ${labelSide} cho: ${name}`);
                 }).catch(() => {
-                    showToast('Đã tạo link!');
+                    showToast('Đã tạo link thành công!');
                 });
             }
 
@@ -527,12 +657,12 @@
 
                     const tr = document.createElement('tr');
                     tr.innerHTML = `
-                        <td style="font-weight: 600;">${idx + 1}</td>
+                        <td style="font-weight: 600; text-align: center;">${idx + 1}</td>
                         <td style="font-weight: 600; color: #3b281c;">${name}</td>
                         <td><span class="url_text">${link}</span></td>
-                        <td style="text-align: center;">
-                            <button class="btn btn_secondary btn_sm btn_copy_row" data-url="${link}" data-name="${name}">Copy</button>
-                            <button class="btn btn_sm btn_open_row" data-url="${link}">Mở</button>
+                        <td style="text-align: center; white-space: nowrap;">
+                            <button class="btn btn_nhatrai btn_sm btn_open_row" data-url="${link}" style="margin-right: 4px;">🌐 Mở</button>
+                            <button class="btn btn_secondary btn_sm btn_copy_row" data-url="${link}" data-name="${name}">📋 Copy</button>
                         </td>
                     `;
                     batchTableBody.appendChild(tr);
@@ -547,15 +677,17 @@
             btnGenBatchNhagai.addEventListener('click', () => handleBatchGen('nhagai', 'Nhà Gái'));
 
             document.addEventListener('click', (e) => {
-                if (e.target.classList.contains('btn_copy_row')) {
-                    const url = e.target.dataset.url;
-                    const name = e.target.dataset.name;
+                const copyBtn = e.target.closest('.btn_copy_row');
+                if (copyBtn) {
+                    const url = copyBtn.dataset.url;
+                    const name = copyBtn.dataset.name;
                     navigator.clipboard.writeText(url).then(() => {
                         showToast(`Đã chép link cho: ${name}`);
                     });
                 }
-                if (e.target.classList.contains('btn_open_row')) {
-                    const url = e.target.dataset.url;
+                const openBtn = e.target.closest('.btn_open_row');
+                if (openBtn) {
+                    const url = openBtn.dataset.url;
                     window.open(url, '_blank');
                 }
             });

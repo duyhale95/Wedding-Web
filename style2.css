@@ -49,12 +49,13 @@
 }
 
 @keyframes flash-shadow-img {
-    0%, 100% 
-    {
+
+    0%,
+    100% {
         box-shadow: 0 0 5px rgba(157, 157, 157, 0.534);
     }
-    50% 
-    {
+
+    50% {
         box-shadow: 0 0 7px rgba(60, 60, 60, 0.556);
     }
 }
@@ -114,23 +115,24 @@
 }
 
 @keyframes flash-shadow {
-    0%, 100% 
-    {
+
+    0%,
+    100% {
         box-shadow: 0 0 12px rgb(208, 211, 211);
     }
-    50% 
-    {
+
+    50% {
         box-shadow: 0 0 15px rgb(179, 190, 188);
     }
 }
 
 .nhay-shadow {
-animation: flash-shadow 2s infinite;
+    animation: flash-shadow 2s infinite;
 }
 
 
 
-.cf_container > div {
+.cf_container>div {
     margin-top: 8px;
 }
 
@@ -138,13 +140,13 @@ animation: flash-shadow 2s infinite;
     font-weight: bold;
     text-transform: uppercase;
     font-size: 18px;
-    
+
 }
 
 .cf_desc2 {
     text-transform: uppercase;
     font-size: 16px;
-    
+
 }
 
 .cf_desc3 {
@@ -179,7 +181,7 @@ animation: flash-shadow 2s infinite;
     font-size: 13.8px;
 }
 
-.cf_btn > a {
+.cf_btn>a {
     text-decoration: none;
     color: black;
 }
@@ -239,7 +241,7 @@ animation: flash-shadow 2s infinite;
     scroll-snap-align: start;
     /* max-width: 85%; */
     position: relative;
-    
+
     /* background-color: black; */
 }
 
@@ -247,11 +249,11 @@ animation: flash-shadow 2s infinite;
     opacity: 0.8;
     transform: scale(0.8);
     transition: opacity 0.2s linear, transform 0.2s linear;
-  }
-  
+}
 
 
-.popup_item > img {
+
+.popup_item>img {
     border-radius: 18px;
     width: 100%;
     height: 100%;
@@ -267,7 +269,7 @@ animation: flash-shadow 2s infinite;
         /* gap: 12px; */
     }
 }
-  
+
 
 /* transform: translateX(60px) */
 /* transform: translateX(-60px) */
@@ -279,7 +281,8 @@ animation: flash-shadow 2s infinite;
     width: 8%;
     height: 6%;
     /* background-color: rgba(255, 0, 0, 0.312); */
-    z-index: 4; /* đảm bảo nổi lên trên */
+    z-index: 4;
+    /* đảm bảo nổi lên trên */
     cursor: pointer;
 }
 
@@ -298,22 +301,26 @@ animation: flash-shadow 2s infinite;
     z-index: 5;
     font-size: 14px;
     font-family: 'Times New Roman', Times, serif;
-  }
-  #copy-toast.show {
+}
+
+#copy-toast.show {
     opacity: 1;
-  }
+}
 
 
 .hide-horizontal-scrollbar {
     overflow-x: scroll;
     overflow-y: hidden;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE, Edge cũ */
-  }
-  
-  .hide-horizontal-scrollbar::-webkit-scrollbar {
-    height: 0px; /* Chrome, Safari */
-  }
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE, Edge cũ */
+}
+
+.hide-horizontal-scrollbar::-webkit-scrollbar {
+    height: 0px;
+    /* Chrome, Safari */
+}
 
 /* album....................................................................................... */
 
@@ -341,11 +348,12 @@ animation: flash-shadow 2s infinite;
 
 .album_container {
     column-count: 2;
-    column-gap: 1.5%; /* Khoảng cách giữa 2 cột */
+    column-gap: 1.5%;
+    /* Khoảng cách giữa 2 cột */
     padding: 8px;
 }
 
-.album_container > img {
+.album_container>img {
     width: 100%;
     display: block;
     margin-bottom: 3%;
@@ -366,42 +374,106 @@ animation: flash-shadow 2s infinite;
 
 .thank_container {
     height: 100vh;
+    height: 100dvh;
     width: 100%;
-    background-image: url(./source/photos/thank_bg.jpg);
+    background-image: url(./source/photos/dsc05809.jpg);
     position: relative;
     overflow: hidden;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center 35%;
     background-size: cover;
     align-items: center;
     justify-content: center;
     display: flex;
     flex-direction: column;
-    
 }
 
-.thank_desc > img {
-    height: 50px;
-    margin-top: 12px;
-    
+.thank_container::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.18) 0%, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0.35) 100%);
+    pointer-events: none;
+    z-index: 1;
 }
 
 .thank_desc {
-    line-height: 30px;
-    padding-bottom: 24px;
-    background-color: rgba(236, 236, 236, 0.322);
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px);
-    width: 100%;
+    position: relative;
+    z-index: 2;
+    padding: 32px 24px;
+    background: rgba(255, 255, 255, 0.85);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    width: 90%;
+    max-width: 440px;
+    border-radius: 24px;
+    border: 2px solid rgba(212, 175, 55, 0.85);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
     text-align: center;
-    color: rgb(255, 255, 255);
+    color: #3b281c;
+    margin: 0 auto;
+}
 
-    font-family: "Alex Brush", cursive;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 30px;
-    text-shadow: 0 0 20px rgb(0, 0, 0);
+body[data-side="nhagai"] .thank_desc {
+    background: rgba(255, 255, 255, 0.85);
+    border-color: rgba(217, 119, 127, 0.85);
+    box-shadow: 0 20px 45px rgba(217, 119, 127, 0.28);
+}
 
+.thank_flourish_top {
+    font-family: "Pinyon Script", "Great Vibes", cursive;
+    font-size: clamp(34px, 8.5vw, 48px);
+    color: #a22a2d;
+    text-shadow: none;
+    line-height: 1.1;
+    margin-bottom: 8px;
+}
+
+body[data-side="nhagai"] .thank_flourish_top {
+    color: #b8525b;
+    text-shadow: none;
+}
+
+.thank_svg_img {
+    height: 52px;
+    width: auto;
+    max-width: 85%;
+    object-fit: contain;
+    margin: 4px auto 12px auto;
+    display: block;
+    filter: none;
+}
+
+body[data-side="nhagai"] .thank_svg_img {
+    filter: none;
+}
+
+.thank_text_main {
+    font-family: "Cormorant Garamond", "Noto Serif Display", serif;
+    font-size: clamp(17px, 4.5vw, 21px);
+    font-style: italic;
+    font-weight: 600;
+    color: #4a3628;
+    letter-spacing: 0.5px;
+    text-shadow: none;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+body[data-side="nhagai"] .thank_text_main {
+    color: #5c2c32;
+    text-shadow: none;
+}
+
+.thank_flourish_bottom {
+    color: #b8860b;
+    font-size: 13px;
+    letter-spacing: 6px;
+    opacity: 0.9;
+}
+
+body[data-side="nhagai"] .thank_flourish_bottom {
+    color: #d9777f;
 }
 
 .thank_desc {
@@ -488,8 +560,15 @@ animation: flash-shadow 2s infinite;
 }
 
 @keyframes cardFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-7px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
 }
 
 .corner_gold {
@@ -499,10 +578,34 @@ animation: flash-shadow 2s infinite;
     border: 2px solid #d4af37;
     pointer-events: none;
 }
-.corner_tl { top: 12px; left: 12px; border-right: none; border-bottom: none; }
-.corner_tr { top: 12px; right: 12px; border-left: none; border-bottom: none; }
-.corner_bl { bottom: 12px; left: 12px; border-right: none; border-top: none; }
-.corner_br { bottom: 12px; right: 12px; border-left: none; border-top: none; }
+
+.corner_tl {
+    top: 12px;
+    left: 12px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.corner_tr {
+    top: 12px;
+    right: 12px;
+    border-left: none;
+    border-bottom: none;
+}
+
+.corner_bl {
+    bottom: 12px;
+    left: 12px;
+    border-right: none;
+    border-top: none;
+}
+
+.corner_br {
+    bottom: 12px;
+    right: 12px;
+    border-left: none;
+    border-top: none;
+}
 
 .envelope_wax_seal {
     width: 58px;
@@ -577,7 +680,7 @@ animation: flash-shadow 2s infinite;
     border-radius: 30px;
     margin-bottom: 16px;
     border: 1px solid #e2d2c1;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
 }
 
 .guest_label {
@@ -853,7 +956,8 @@ animation: flash-shadow 2s infinite;
     text-align: center;
 }
 
-.orig_bride_name, .orig_groom_name {
+.orig_bride_name,
+.orig_groom_name {
     font-family: "Pinyon Script", "Great Vibes", cursive;
     font-size: clamp(30px, 8vw, 40px);
     color: #a22a2d;
@@ -1022,28 +1126,37 @@ animation: flash-shadow 2s infinite;
         padding: 0 4px;
         gap: 24px;
     }
+
     .orig_card {
         padding: 28px 14px 24px 14px;
     }
+
     .orig_callig_name {
         font-size: 32px;
     }
-    .orig_bride_name, .orig_groom_name {
+
+    .orig_bride_name,
+    .orig_groom_name {
         font-size: 34px;
     }
+
     .orig_venue_name {
         font-size: 44px;
     }
+
     .orig_fam_name {
         font-size: 10.5px;
         letter-spacing: -0.3px;
     }
+
     .orig_fam_addr {
         font-size: 10.5px;
     }
+
     .date_part {
         font-size: 28px;
     }
+
     .envelope_name {
         font-size: 36px;
     }
@@ -1168,27 +1281,43 @@ animation: flash-shadow 2s infinite;
     max-width: 580px;
     margin: 35px auto 25px auto;
     background: rgba(255, 255, 255, 0.92);
-    border-radius: 18px;
-    padding: 24px 18px;
-    border: 1px solid #ebdcd0;
-    box-shadow: 0 8px 24px rgba(120, 95, 75, 0.08);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 26px 20px;
+    border: 2px solid #d4af37;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
     text-align: center;
 }
 
+body[data-side="nhagai"] .countdown_section {
+    border-color: #d9777f;
+    box-shadow: 0 12px 30px rgba(217, 119, 127, 0.12);
+}
+
 .countdown_header {
-    font-family: "Alex Brush", cursive;
-    font-size: 32px;
-    color: #735d4f;
+    font-family: "Pinyon Script", "Great Vibes", cursive;
+    font-size: clamp(32px, 8vw, 42px);
+    color: #a22a2d;
     margin-bottom: 2px;
+}
+
+body[data-side="nhagai"] .countdown_header {
+    color: #b8525b;
 }
 
 .countdown_subheader {
     font-family: "Noto Serif Display", serif;
     font-size: 13px;
-    letter-spacing: 1.5px;
-    color: #8c7360;
+    letter-spacing: 2px;
+    color: #594233;
     text-transform: uppercase;
     margin-bottom: 20px;
+    font-weight: 600;
+}
+
+body[data-side="nhagai"] .countdown_subheader {
+    color: #7a3239;
 }
 
 .countdown_grid {
@@ -1200,29 +1329,38 @@ animation: flash-shadow 2s infinite;
 .countdown_box {
     flex: 1;
     max-width: 90px;
-    background: #f7f1eb;
-    border: 1px solid #e6d6c6;
+    background: #ffffff;
+    border: 1px solid rgba(212, 175, 55, 0.45);
     border-radius: 14px;
     padding: 12px 4px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
     transition: transform 0.2s ease;
+}
+
+body[data-side="nhagai"] .countdown_box {
+    border-color: rgba(217, 119, 127, 0.45);
 }
 
 .countdown_num {
     font-family: "Noto Serif Display", serif;
     font-size: 28px;
     font-weight: bold;
-    color: #594233;
+    color: #a22a2d;
     line-height: 1;
     margin-bottom: 4px;
+}
+
+body[data-side="nhagai"] .countdown_num {
+    color: #b8525b;
 }
 
 .countdown_label {
     font-family: "Montserrat", sans-serif;
     font-size: 11px;
-    color: #8c7665;
+    color: #776353;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    font-weight: 600;
 }
 
 /* ==========================================================================
@@ -1275,7 +1413,7 @@ animation: flash-shadow 2s infinite;
     max-width: 440px;
     border-radius: 18px;
     padding: 26px 24px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
     text-align: center;
     position: relative;
     font-family: "Noto Serif Display", serif;
@@ -1364,9 +1502,17 @@ animation: flash-shadow 2s infinite;
 }
 
 @keyframes goldShimmer {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 /* Scroll Reveal Classes */
@@ -1429,14 +1575,14 @@ animation: flash-shadow 2s infinite;
 }
 
 /* Photo Gallery Enhancements & Lightbox */
-.album_container > img {
+.album_container>img {
     border-radius: 14px;
     cursor: pointer;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-.album_container > img:hover {
+.album_container>img:hover {
     transform: scale(1.03) translateY(-4px) !important;
     box-shadow: 0 14px 28px rgba(90, 70, 55, 0.22) !important;
 }
@@ -1493,8 +1639,13 @@ animation: flash-shadow 2s infinite;
     transform: translateY(-50%) scale(1.1);
 }
 
-.lightbox_btn_prev { left: 16px; }
-.lightbox_btn_next { right: 16px; }
+.lightbox_btn_prev {
+    left: 16px;
+}
+
+.lightbox_btn_next {
+    right: 16px;
+}
 
 .lightbox_close {
     position: absolute;
@@ -1595,8 +1746,13 @@ animation: flash-shadow 2s infinite;
 }
 
 @keyframes spinDisc {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /* Music Equalizer Waves */
@@ -1622,13 +1778,26 @@ animation: flash-shadow 2s infinite;
     animation: waveBounce 1.2s ease-in-out infinite alternate;
 }
 
-.music_control_btn.playing .music_waves span:nth-child(1) { animation-delay: 0s; }
-.music_control_btn.playing .music_waves span:nth-child(2) { animation-delay: 0.3s; }
-.music_control_btn.playing .music_waves span:nth-child(3) { animation-delay: 0.6s; }
+.music_control_btn.playing .music_waves span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.music_control_btn.playing .music_waves span:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.music_control_btn.playing .music_waves span:nth-child(3) {
+    animation-delay: 0.6s;
+}
 
 @keyframes waveBounce {
-    0% { height: 2px; }
-    100% { height: 10px; }
+    0% {
+        height: 2px;
+    }
+
+    100% {
+        height: 10px;
+    }
 }
 
 /* ==========================================================================
@@ -1677,10 +1846,29 @@ animation: flash-shadow 2s infinite;
     pointer-events: none;
 }
 
-.corner_tl { top: 12px; left: 12px; border-width: 2px 0 0 2px; }
-.corner_tr { top: 12px; right: 12px; border-width: 2px 2px 0 0; }
-.corner_bl { bottom: 12px; left: 12px; border-width: 0 0 2px 2px; }
-.corner_br { bottom: 12px; right: 12px; border-width: 0 2px 2px 0; }
+.corner_tl {
+    top: 12px;
+    left: 12px;
+    border-width: 2px 0 0 2px;
+}
+
+.corner_tr {
+    top: 12px;
+    right: 12px;
+    border-width: 2px 2px 0 0;
+}
+
+.corner_bl {
+    bottom: 12px;
+    left: 12px;
+    border-width: 0 0 2px 2px;
+}
+
+.corner_br {
+    bottom: 12px;
+    right: 12px;
+    border-width: 0 2px 2px 0;
+}
 
 .wedding_info_title {
     font-family: 'Playfair Display', Georgia, serif !important;
@@ -2010,7 +2198,8 @@ animation: flash-shadow 2s infinite;
     white-space: nowrap;
 }
 
-.switcher_btn.active, .switcher_btn:hover {
+.switcher_btn.active,
+.switcher_btn:hover {
     background: linear-gradient(135deg, #a22a2d 0%, #7d1a1d 100%);
     color: #ffffff;
     box-shadow: 0 2px 8px rgba(162, 42, 45, 0.5);
@@ -2297,7 +2486,3 @@ animation: flash-shadow 2s infinite;
     margin-top: 2px;
     font-style: italic;
 }
-
-
-
-
