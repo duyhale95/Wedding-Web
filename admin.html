@@ -269,92 +269,90 @@
         </div>
         <!-- Link Xem Thiệp Trực Tiếp -->
         <div
-            style="background: #ffffff; padding: 14px; border-radius: 10px; border: 1px solid #e5d8cb; margin-top: 14px;">
-            <div style="font-size: 13px; font-weight: 700; color: #594233; margin-bottom: 8px;">🚀 Xem Thiệp Trực Tiếp
-                (Không cần tên khách):</div>
+            style="background: #faf6f0; padding: 16px; border-radius: 12px; border: 1px solid #ebdccb; margin-bottom: 25px;">
+            <div style="font-size: 13.5px; font-weight: 700; color: #594233; margin-bottom: 10px;">🚀 Xem Thiệp Trực Tiếp (Không cần tên khách):</div>
             <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <button id="btnOpenDirectNhatrai" class="btn btn_sm" style="background: linear-gradient(135deg, #a22a2d 0%, #761618 100%);">🔗 Xem Thiệp Nhà Trai</button>
                 <button id="btnCopyDirectNhatrai" class="btn btn_sm btn_secondary">📋 Copy Link Nhà Trai</button>
+                <button id="btnOpenDirectNhagai" class="btn btn_sm" style="background: linear-gradient(135deg, #b8860b 0%, #8c6509 100%);">🔗 Xem Thiệp Nhà Gái</button>
                 <button id="btnCopyDirectNhagai" class="btn btn_sm btn_secondary">📋 Copy Link Nhà Gái</button>
             </div>
         </div>
-    </div>
 
-    <!-- Tab chuyển đổi -->
-    <div class="tab_buttons">
-        <button id="tabSingleBtn" class="tab_btn active">Tạo 1 Khách</button>
-        <button id="tabBatchBtn" class="tab_btn">Tạo Hàng Loạt (Nhiều Khách)</button>
-    </div>
-
-    <!-- Tab 1: Tạo đơn lẻ -->
-    <div id="tabSingle" class="tab_content">
-        <div class="form_section">
-            <div class="section_title">✉️ Tạo link gửi cho 1 khách mời</div>
-            <div class="input_group">
-                <label for="singleGuestInput">Tên khách mời hiển thị trên thiệp:</label>
-                <input type="text" id="singleGuestInput" class="input_control"
-                    placeholder="Ví dụ: Lớp Tin học K16, Anh Nam & Chị Mai, Gia đình Bác Hùng..." />
-            </div>
-            <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px;">
-                <button id="btnGenSingleNhatrai" class="btn"
-                    style="background: linear-gradient(135deg, #a22a2d 0%, #761618 100%);">🔴 Tạo Link Nhà Trai</button>
-                <button id="btnGenSingleNhagai" class="btn"
-                    style="background: linear-gradient(135deg, #b8860b 0%, #8c6509 100%);">🌸 Tạo Link Nhà Gái</button>
-            </div>
+        <!-- Tab chuyển đổi -->
+        <div class="tab_buttons">
+            <button id="tabSingleBtn" class="tab_btn active">Tạo 1 Khách</button>
+            <button id="tabBatchBtn" class="tab_btn">Tạo Hàng Loạt (Nhiều Khách)</button>
         </div>
 
-        <div id="singleResultBox" style="display: none;" class="form_section">
-            <div class="section_title">🎉 Đường link đã được tạo:</div>
-            <div class="input_group">
-                <input type="text" id="singleResultUrl" class="input_control url_text" readonly />
-            </div>
-            <div style="display: flex; gap: 10px;">
-                <button id="btnCopySingle" class="btn btn_sm">📋 Chép Link</button>
-                <button id="btnOpenSingle" class="btn btn_secondary btn_sm">🔗 Mở Xem Thử</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Tab 2: Tạo hàng loạt -->
-    <div id="tabBatch" class="tab_content" style="display: none;">
-        <div class="form_section">
-            <div class="section_title">📝 Nhập danh sách nhiều khách mời</div>
-            <div class="input_group">
-                <label for="batchGuestsInput">Nhập mỗi khách mời trên 1 dòng:</label>
-                <textarea id="batchGuestsInput" class="input_control"
-                    placeholder="Lớp Tin học K16&#10;Anh Nam & Chị Mai&#10;Gia đình Bác Hùng&#10;Bạn Hoàng (Đại học)"></textarea>
-            </div>
-            <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px;">
-                <button id="btnGenBatchNhatrai" class="btn"
-                    style="background: linear-gradient(135deg, #a22a2d 0%, #761618 100%);">🔴 Tạo Tất Cả Link Nhà
-                    Trai</button>
-                <button id="btnGenBatchNhagai" class="btn"
-                    style="background: linear-gradient(135deg, #b8860b 0%, #8c6509 100%);">🌸 Tạo Tất Cả Link Nhà
-                    Gái</button>
-            </div>
-        </div>
-
-        <div id="batchResultSection" style="display: none;">
-            <div class="actions_bar">
-                <div class="section_title" style="margin: 0;">
-                    📋 Danh sách link đã tạo <span id="badgeCountBadge" class="badge_count">0</span>
+        <!-- Tab 1: Tạo đơn lẻ -->
+        <div id="tabSingle" class="tab_content">
+            <div class="form_section">
+                <div class="section_title">✉️ Tạo link gửi cho 1 khách mời</div>
+                <div class="input_group">
+                    <label for="singleGuestInput">Tên khách mời hiển thị trên thiệp:</label>
+                    <input type="text" id="singleGuestInput" class="input_control"
+                        placeholder="Ví dụ: Lớp Tin học K16, Anh Nam & Chị Mai, Gia đình Bác Hùng..." />
                 </div>
-                <button id="btnCopyAllBatch" class="btn btn_secondary btn_sm">📋 Copy Tất Cả Link</button>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px;">
+                    <button id="btnGenSingleNhatrai" class="btn"
+                        style="background: linear-gradient(135deg, #a22a2d 0%, #761618 100%);">🔴 Tạo Link Nhà Trai</button>
+                    <button id="btnGenSingleNhagai" class="btn"
+                        style="background: linear-gradient(135deg, #b8860b 0%, #8c6509 100%);">🌸 Tạo Link Nhà Gái</button>
+                </div>
             </div>
 
-            <table class="results_table">
-                <thead>
-                    <tr>
-                        <th style="width: 50px;">STT</th>
-                        <th style="width: 220px;">Tên Khách Mời</th>
-                        <th>Link Gửi Riêng</th>
-                        <th style="width: 140px; text-align: center;">Thao Tác</th>
-                    </tr>
-                </thead>
-                <tbody id="batchTableBody">
-                </tbody>
-            </table>
+            <div id="singleResultBox" style="display: none;" class="form_section">
+                <div class="section_title">🎉 Đường link đã được tạo:</div>
+                <div class="input_group">
+                    <input type="text" id="singleResultUrl" class="input_control url_text" readonly />
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <button id="btnCopySingle" class="btn btn_sm">📋 Chép Link</button>
+                    <button id="btnOpenSingle" class="btn btn_secondary btn_sm">🔗 Mở Xem Thử</button>
+                </div>
+            </div>
         </div>
-    </div>
+
+        <!-- Tab 2: Tạo hàng loạt -->
+        <div id="tabBatch" class="tab_content" style="display: none;">
+            <div class="form_section">
+                <div class="section_title">📝 Nhập danh sách nhiều khách mời</div>
+                <div class="input_group">
+                    <label for="batchGuestsInput">Nhập mỗi khách mời trên 1 dòng:</label>
+                    <textarea id="batchGuestsInput" class="input_control"
+                        placeholder="Lớp Tin học K16&#10;Anh Nam & Chị Mai&#10;Gia đình Bác Hùng&#10;Bạn Hoàng (Đại học)"></textarea>
+                </div>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px;">
+                    <button id="btnGenBatchNhatrai" class="btn"
+                        style="background: linear-gradient(135deg, #a22a2d 0%, #761618 100%);">🔴 Tạo Tất Cả Link Nhà Trai</button>
+                    <button id="btnGenBatchNhagai" class="btn"
+                        style="background: linear-gradient(135deg, #b8860b 0%, #8c6509 100%);">🌸 Tạo Tất Cả Link Nhà Gái</button>
+                </div>
+            </div>
+
+            <div id="batchResultSection" style="display: none;">
+                <div class="actions_bar">
+                    <div class="section_title" style="margin: 0;">
+                        📋 Danh sách link đã tạo <span id="badgeCountBadge" class="badge_count">0</span>
+                    </div>
+                    <button id="btnCopyAllBatch" class="btn btn_secondary btn_sm">📋 Copy Tất Cả Link</button>
+                </div>
+
+                <table class="results_table">
+                    <thead>
+                        <tr>
+                            <th style="width: 50px;">STT</th>
+                            <th style="width: 220px;">Tên Khách Mời</th>
+                            <th>Link Gửi Riêng</th>
+                            <th style="width: 140px; text-align: center;">Thao Tác</th>
+                        </tr>
+                    </thead>
+                    <tbody id="batchTableBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
     <div id="toast" class="toast">Đã copy!</div>
@@ -399,7 +397,14 @@
                 }
             }
 
-            // Quick Copy Direct Buttons
+            // Quick Copy & Preview Direct Buttons
+            document.getElementById('btnOpenDirectNhatrai').addEventListener('click', () => {
+                let base = (baseUrlInput && baseUrlInput.value.trim()) ? baseUrlInput.value.trim() : defaultUrl;
+                if (!base.endsWith('/')) base += '/';
+                const link = base + 'nhatrai';
+                window.open(link, '_blank');
+            });
+
             document.getElementById('btnCopyDirectNhatrai').addEventListener('click', () => {
                 let base = (baseUrlInput && baseUrlInput.value.trim()) ? baseUrlInput.value.trim() : defaultUrl;
                 if (!base.endsWith('/')) base += '/';
@@ -407,6 +412,13 @@
                 navigator.clipboard.writeText(link).then(() => {
                     showToast('Đã chép link Nhà Trai: ' + link);
                 });
+            });
+
+            document.getElementById('btnOpenDirectNhagai').addEventListener('click', () => {
+                let base = (baseUrlInput && baseUrlInput.value.trim()) ? baseUrlInput.value.trim() : defaultUrl;
+                if (!base.endsWith('/')) base += '/';
+                const link = base + 'nhagai';
+                window.open(link, '_blank');
             });
 
             document.getElementById('btnCopyDirectNhagai').addEventListener('click', () => {
