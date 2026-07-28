@@ -165,17 +165,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const guestParam = urlParams.get('to');
     const envelopeGuestNameEl = document.getElementById('envelopeGuestName');
+    const cardCoverGuestNameEl = document.getElementById('cardCoverGuestName');
+    const cardPartyGuestNameEl = document.getElementById('cardPartyGuestName');
 
-    if (guestParam && guestParam.trim() !== '') {
-        const decodedGuestName = decodeURIComponent(guestParam);
-        if (envelopeGuestNameEl) {
-            envelopeGuestNameEl.textContent = decodedGuestName;
-        }
-    } else {
-        if (envelopeGuestNameEl) {
-            envelopeGuestNameEl.textContent = 'Quý khách';
-        }
-    }
+    const guestText = (guestParam && guestParam.trim() !== '') ? decodeURIComponent(guestParam) : 'Quý khách';
+
+    if (envelopeGuestNameEl) envelopeGuestNameEl.textContent = guestText;
+    if (cardCoverGuestNameEl) cardCoverGuestNameEl.textContent = guestText;
+    if (cardPartyGuestNameEl) cardPartyGuestNameEl.textContent = guestText;
 
     const envelopeOverlay = document.getElementById('envelopeOverlay');
     const btnOpenEnvelope = document.getElementById('btnOpenEnvelope');
@@ -184,6 +181,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnOpenEnvelope && envelopeOverlay) {
         btnOpenEnvelope.addEventListener('click', () => {
             envelopeOverlay.classList.add('opened');
+            setTimeout(() => {
+                envelopeOverlay.style.display = 'none';
+            }, 900);
             if (audio) {
                 audio.play().catch(e => console.log('Audio autoplay prevented:', e));
             }

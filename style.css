@@ -105,61 +105,99 @@ body {
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url(./source/photos/cover_bg.jpg);
+    background-image: url("./source/photos/dsc05695.jpg") !important;
     background-size: cover;
-    background-position: center;
+    background-position: center 30%;
     background-repeat: no-repeat;
-    animation: zoomInOut 10s ease-in-out infinite;
+    animation: zoomInOut 12s ease-in-out infinite;
     z-index: 0;
-    transform-origin: center;
+    transform-origin: center 30%;
+}
+
+.thiep::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.08) 50%, rgba(0, 0, 0, 0.55) 100%);
+    z-index: 1;
+    pointer-events: none;
 }
 
 .thiep_blur-bg {
     position: relative;
-    width: 92%;
-    margin: 4%;
-    border-radius: 20px;
-    background: #7d7d7d45;
-    -webkit-backdrop-filter: blur(2px);
-    backdrop-filter: blur(2px);
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    border-radius: 0;
+    background: transparent;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
     color: white;
     text-align: center;
-    z-index: 1;
+    z-index: 2;
+    border: none;
+    box-shadow: none;
+    padding: 50px 20px 40px 20px;
 }
 
 .thiep_container {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     color: white;
     text-align: center;
-    text-shadow: 0 0 20px rgb(0, 0, 0);
 }
 
 .thiep_des {
-    margin: 18px;
-    margin-bottom: 24px;
-    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.font_fancy_savetime {
+    font-family: "Pinyon Script", "Great Vibes", "MonteCarlo", cursive;
+    font-size: 38px;
     color: #ffffff;
-    opacity: 0.9;
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.9);
+    margin: 0;
+    line-height: 1.1;
+}
+
+.thiep_gold_flourish {
+    color: #d4af37;
+    font-size: 16px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .thiep_name {
-    margin: 36px 0;
+    margin: 20px 0 26px 0;
+}
+
+.thiep_couple_title {
+    font-family: "Pinyon Script", "Great Vibes", cursive;
+    font-size: 46px;
+    font-weight: 500;
+    color: #ffffff !important;
+    text-shadow: 0 4px 18px rgba(0, 0, 0, 0.95), 0 0 10px rgba(0, 0, 0, 0.8) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    line-height: 1.15;
+}
+
+.thiep_ampersand {
+    font-family: "Pinyon Script", "Great Vibes", cursive;
     font-size: 36px;
+    color: #f7e2bd !important;
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.9) !important;
 }
 
-.thiep_name > p {
-    text-transform: uppercase;
-    
-}
-
-.thiep_small {
-    font-size: 20px;
-}
-
-/* Phần 2....................................................... */
+/* Date Box Section */
 .thiep_date_box {
-    margin-top: 32px;
+    margin: 26px 0;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -170,21 +208,13 @@ body {
     width: 100%;
 }
 
-.hr-wrapper {
-    display: none;
-}
-
-.thiep_space {
-    height: 12px;
-}
-
 .thiep_date_row {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 16px;
     width: 100%;
-    max-width: 380px;
+    max-width: 360px;
     margin: 0 auto;
 }
 
@@ -194,101 +224,117 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 5px;
-    min-width: 100px;
+    gap: 4px;
 }
 
-.thiep_item hr {
+.gold_line {
     width: 100%;
     border: none;
-    border-top: 1px solid rgba(255, 255, 255, 0.9);
+    border-top: 1px solid rgba(212, 175, 55, 0.75);
     margin: 0;
 }
 
-.thiep_item span {
-    font-size: 14px;
-    letter-spacing: 1.5px;
-    line-height: 22px;
+.padding_day, .padding_hour {
+    font-family: "Montserrat", sans-serif;
+    font-size: 13px;
+    letter-spacing: 2.5px;
+    font-weight: 600;
     white-space: nowrap;
     display: block;
     text-align: center;
-}
-
-.padding_day, .padding_hour {
-    padding: 0 4px;
+    color: #ffffff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
 }
 
 .thiep_main_date {
-    font-size: 52px;
-    font-weight: bold;
+    font-family: "Noto Serif Display", serif;
+    font-size: 58px;
+    font-weight: 700;
     padding: 0 10px;
     line-height: 1;
-    min-width: 65px;
-    text-align: center;
+    color: #ffffff;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.95);
 }
 
 .thiep_month_year {
     margin-top: 12px;
+    font-family: "Noto Serif Display", serif;
     font-size: 16px;
-    letter-spacing: 2px;
+    letter-spacing: 3.5px;
     text-align: center;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
 }
 
-/* phần 3 */
+/* Venue Section */
 .thiep_add {
     position: relative;
     display: flex;
     flex-direction: column;
     text-align: center;
-    margin-top: 18px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.3);
 }
 
 .add_fancy {
-    font-size: 20px;
+    font-family: "Pinyon Script", "Great Vibes", cursive;
+    font-size: 28px;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
 }
 
 .add_big {
-    margin-top: 8px;
-    margin-bottom: 12px;
-    font-size: 16px;
+    margin-top: 6px;
+    margin-bottom: 8px;
+    font-family: "Noto Serif Display", serif;
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #ffffff;
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.95);
 }
 
 .add_small {
-    font-size: 13px;
-    line-height: 16px;
-    letter-spacing: 0.5px;
-}
-
-.hr-add {
-    margin-top: 18px;
-    height: 1px;
-    background-color: rgba(255, 255, 255, 0.7);
-    width: 80%;
-    max-width: 260px;
-    margin-left: auto;
-    margin-right: auto;
-    border: none;
+    font-family: "Noto Serif Display", serif;
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: 0.8px;
+    color: rgba(255, 255, 255, 0.92);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
 }
 
 .thiep_all_icon {
     display: block;
-    margin: 16px 0;
+    margin-top: 22px;
 }
 
-.thiep_map {
-    display: block; /* Đảm bảo ảnh nền hiển thị */
-    width: 16px;
-    height: 16px;
-    display: flex;
-    justify-content: center;
+.thiep_map_btn {
+    display: inline-flex;
     align-items: center;
-    border: 1px solid white;
-    border-radius: 50%;
-    padding: 12px;
-    margin: 0 auto;
+    justify-content: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.22);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    color: #ffffff;
+    padding: 10px 24px;
+    border-radius: 25px;
+    font-family: "Noto Serif Display", serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    letter-spacing: 0.5px;
 }
 
-.thiep_map:hover {
+.thiep_map_btn:hover {
+    background: rgba(255, 255, 255, 0.35);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
     border: 1px solid rgb(125, 125, 125);
 }
 

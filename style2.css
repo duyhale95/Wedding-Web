@@ -447,7 +447,7 @@ animation: flash-shadow 2s infinite;
 }
 
 /* ==========================================================================
-   ENVELOPE LANDING OVERLAY (Matching Image 1)
+   LUXURY ENVELOPE LANDING OVERLAY
    ========================================================================== */
 #envelopeOverlay {
     position: fixed;
@@ -455,18 +455,18 @@ animation: flash-shadow 2s infinite;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: radial-gradient(circle at center, #f5ebe1 0%, #e6d5c5 100%);
+    background: radial-gradient(circle at center, #fffdf9 0%, #f4e7d7 55%, #dfcaa5 100%);
     z-index: 99999;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
-    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s;
+    transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.9s;
 }
 
 #envelopeOverlay.opened {
     opacity: 0;
-    transform: scale(1.08) translateY(-30px);
+    transform: scale(1.08) translateY(-40px);
     pointer-events: none;
     visibility: hidden;
 }
@@ -474,117 +474,496 @@ animation: flash-shadow 2s infinite;
 .envelope_card {
     position: relative;
     width: 100%;
-    max-width: 460px;
-    background: #fdfbf7;
+    max-width: 440px;
+    background: #ffffff;
     border-radius: 20px;
-    padding: 42px 28px 36px 28px;
+    padding: 46px 28px 38px 28px;
     text-align: center;
-    box-shadow: 0 20px 50px rgba(90, 70, 55, 0.22), inset 0 0 0 1px rgba(255, 255, 255, 0.8);
-    border: 1px solid #e2d2c1;
+    box-shadow: 0 25px 60px rgba(90, 60, 40, 0.2), inset 0 0 0 2px #d4af37, inset 0 0 0 6px #fffdfa;
+    border: 1px solid #cbb295;
     overflow: hidden;
     animation: cardFloat 4s ease-in-out infinite;
 }
 
 @keyframes cardFloat {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
+    50% { transform: translateY(-7px); }
 }
 
-.envelope_heart_badge {
-    width: 52px;
-    height: 52px;
-    background: #735d4f;
+.corner_gold {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border: 2px solid #d4af37;
+    pointer-events: none;
+}
+.corner_tl { top: 12px; left: 12px; border-right: none; border-bottom: none; }
+.corner_tr { top: 12px; right: 12px; border-left: none; border-bottom: none; }
+.corner_bl { bottom: 12px; left: 12px; border-right: none; border-top: none; }
+.corner_br { bottom: 12px; right: 12px; border-left: none; border-top: none; }
+
+.envelope_wax_seal {
+    width: 58px;
+    height: 58px;
+    background: linear-gradient(135deg, #a22a2d 0%, #761618 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 16px auto;
-    color: white;
-    font-size: 22px;
-    box-shadow: 0 6px 16px rgba(115, 93, 79, 0.35);
+    margin: 0 auto 14px auto;
+    color: #f7e7ce;
+    box-shadow: 0 8px 20px rgba(162, 42, 45, 0.4), inset 0 0 0 2px rgba(212, 175, 55, 0.6);
 }
 
-.envelope_title {
+.envelope_sub_label {
     font-family: "Noto Serif Display", serif;
-    font-size: 34px;
-    color: #5c4738;
-    margin-bottom: 2px;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #a22a2d;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.envelope_couple_names {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 4px;
+}
+
+.envelope_name {
+    font-family: "Pinyon Script", "Great Vibes", cursive;
+    font-size: 42px;
+    color: #a22a2d;
+    line-height: 1.1;
     font-weight: 500;
 }
 
-.envelope_ampersand {
-    font-family: "Alex Brush", cursive;
-    font-size: 26px;
-    color: #8c7362;
-    margin: 0;
+.envelope_amp {
+    font-family: "Pinyon Script", "Great Vibes", cursive;
+    font-size: 32px;
+    color: #d4af37;
 }
 
-.envelope_ornament {
-    font-size: 16px;
-    color: #a89281;
-    margin: 6px 0 12px 0;
-    letter-spacing: 3px;
-}
-
-.envelope_date {
+.envelope_gold_divider {
     font-family: "Noto Serif Display", serif;
-    font-size: 17px;
-    color: #7a6352;
-    margin-bottom: 12px;
-}
-
-.envelope_invitation_label {
-    font-family: "Alex Brush", cursive;
-    font-size: 26px;
-    color: #8c6e58;
-    margin-bottom: 10px;
+    font-size: 15px;
+    color: #8c7355;
+    letter-spacing: 2px;
+    margin: 10px 0 16px 0;
 }
 
 .guest_pill_box {
-    display: inline-block;
-    background: #f0e6da;
-    color: #4a382a;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background: #fcf8f2;
+    color: #4a3424;
     font-family: "Noto Serif Display", serif;
-    font-size: 18px;
+    padding: 10px 22px;
+    border-radius: 30px;
+    margin-bottom: 16px;
+    border: 1px solid #e2d2c1;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+}
+
+.guest_label {
+    font-size: 13px;
+    color: #776353;
+}
+
+.guest_name {
+    font-family: "Pinyon Script", "Great Vibes", cursive;
+    font-size: 26px;
+    color: #a22a2d;
     font-weight: 600;
-    padding: 8px 24px;
-    border-radius: 25px;
-    margin-bottom: 14px;
-    border: 1px solid #dfcfbe;
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.04);
 }
 
 .envelope_subtext {
-    font-family: "Times New Roman", Times, serif;
-    font-size: 14.5px;
-    color: #786658;
+    font-family: "Noto Serif Display", serif;
+    font-size: 13px;
+    color: #6b5849;
     margin-bottom: 24px;
     font-style: italic;
 }
 
 .btn_open_envelope {
-    background: #735d4f;
-    color: white;
+    background: linear-gradient(135deg, #a22a2d 0%, #761618 100%);
+    color: #ffffff;
     font-family: "Noto Serif Display", serif;
     font-size: 17px;
-    font-weight: 500;
-    padding: 12px 38px;
+    font-weight: 600;
+    padding: 13px 40px;
     border-radius: 30px;
-    border: none;
+    border: 1px solid #d4af37;
     cursor: pointer;
-    box-shadow: 0 6px 18px rgba(115, 93, 79, 0.4);
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 24px rgba(162, 42, 45, 0.4);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     outline: none;
+    letter-spacing: 1px;
 }
 
 .btn_open_envelope:hover {
-    background: #5d493d;
-    transform: translateY(-2px) scale(1.03);
-    box-shadow: 0 8px 22px rgba(115, 93, 79, 0.5);
+    background: linear-gradient(135deg, #b83236 0%, #8c1e20 100%);
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 12px 28px rgba(162, 42, 45, 0.5), 0 0 12px rgba(212, 175, 55, 0.4);
 }
 
 .btn_open_envelope:active {
     transform: translateY(1px) scale(0.97);
+}
+
+/* ==========================================================================
+   REPLICA ORIGINAL WEDDING INVITATION CARDS (VY BAO - 13T9 1.png)
+   ========================================================================== */
+.orig_cards_wrapper {
+    width: 100%;
+    max-width: 460px;
+    margin: 24px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 0 12px;
+}
+
+.orig_card {
+    position: relative;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 34px 22px 30px 22px;
+    box-shadow: 0 12px 36px rgba(120, 90, 70, 0.12), 0 2px 8px rgba(0, 0, 0, 0.04);
+    border: 1px solid #e8dacd;
+    text-align: center;
+    font-family: "Noto Serif Display", serif;
+    color: #2c2c2c;
+    overflow: hidden;
+}
+
+.orig_card::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(162, 42, 45, 0.18);
+    border-radius: 9px;
+    pointer-events: none;
+}
+
+.flower_art_wrapper {
+    margin: 0 auto 12px auto;
+    display: flex;
+    justify-content: center;
+}
+
+.original_flower_art {
+    display: block;
+}
+
+.orig_names_row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 6px;
+}
+
+.orig_callig_name {
+    font-family: "Pinyon Script", "Great Vibes", cursive;
+    font-size: 38px;
+    color: #a22a2d;
+    line-height: 1.15;
+    font-weight: 500;
+}
+
+.orig_heart_mark {
+    display: flex;
+    align-items: center;
+}
+
+.orig_date_center {
+    font-family: "Noto Serif Display", serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: #a22a2d;
+    letter-spacing: 2px;
+    margin-bottom: 22px;
+}
+
+.orig_invitation_section {
+    margin-top: 10px;
+}
+
+.orig_kinhmoi_label {
+    font-size: 13.5px;
+    letter-spacing: 1.5px;
+    color: #333333;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.orig_dotted_line {
+    border-bottom: 1.5px dotted #a22a2d;
+    min-height: 32px;
+    width: 90%;
+    margin: 0 auto 12px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.orig_guest_name {
+    font-family: "Pinyon Script", "Great Vibes", cursive;
+    font-size: 26px;
+    color: #a22a2d;
+    padding: 0 8px;
+}
+
+/* Card 2 Details */
+.vb_monogram_wrapper {
+    margin: 0 auto 12px auto;
+    display: flex;
+    justify-content: center;
+}
+
+.orig_family_grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 18px;
+    text-align: center;
+}
+
+.orig_fam_col {
+    flex: 1;
+}
+
+.orig_fam_role {
+    font-size: 13px;
+    color: #555555;
+    margin-bottom: 2px;
+}
+
+.orig_fam_name {
+    font-size: 11.5px;
+    font-weight: bold;
+    color: #111111;
+    line-height: 1.4;
+    white-space: nowrap;
+    letter-spacing: -0.2px;
+}
+
+.orig_fam_addr {
+    font-size: 11px;
+    color: #555555;
+    margin-top: 4px;
+    line-height: 1.35;
+}
+
+.orig_announce_block {
+    margin: 16px 0;
+}
+
+.orig_ann_sub {
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    color: #333333;
+    margin-bottom: 4px;
+}
+
+.orig_ann_main {
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #222222;
+}
+
+.red_bold {
+    color: #a22a2d;
+    font-weight: bold;
+}
+
+.black_bold {
+    color: #111111;
+    font-weight: bold;
+}
+
+.orig_couple_block {
+    margin: 18px 0;
+}
+
+.orig_bride_name, .orig_groom_name {
+    font-family: "Pinyon Script", "Great Vibes", cursive;
+    font-size: 40px;
+    color: #a22a2d;
+    line-height: 1.15;
+    margin: 2px 0;
+}
+
+.orig_roles_row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin: 4px 0;
+}
+
+.orig_role {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: #333333;
+}
+
+.orig_callig_amp {
+    font-family: "Pinyon Script", "Great Vibes", cursive;
+    font-size: 32px;
+    color: #a22a2d;
+}
+
+.orig_ceremony_block {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px dashed #d8c8b8;
+}
+
+.orig_cer_line {
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    color: #333333;
+    margin-bottom: 4px;
+}
+
+.orig_split_date {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 12px 0;
+}
+
+.date_part {
+    font-size: 32px;
+    font-weight: bold;
+    color: #a22a2d;
+}
+
+.date_sep {
+    font-size: 24px;
+    color: #a22a2d;
+    font-weight: 300;
+}
+
+.orig_lunar_date {
+    font-size: 11.5px;
+    font-style: italic;
+    color: #555555;
+    margin-top: 4px;
+}
+
+/* Card 3 Details */
+.orig_party_kinhmoi {
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    color: #333333;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.orig_party_subtext {
+    font-size: 12.5px;
+    letter-spacing: 0.8px;
+    color: #333333;
+    line-height: 1.6;
+    margin: 14px 0;
+}
+
+.orig_venue_name {
+    font-family: "Pinyon Script", "Great Vibes", cursive;
+    font-size: 52px;
+    color: #a22a2d;
+    margin: 6px 0;
+    line-height: 1.1;
+}
+
+.orig_venue_details {
+    margin-bottom: 16px;
+}
+
+.orig_venue_hall {
+    font-size: 13.5px;
+    font-weight: bold;
+    color: #111111;
+    letter-spacing: 1px;
+}
+
+.orig_venue_addr {
+    font-size: 12px;
+    color: #555555;
+    margin-top: 2px;
+}
+
+.orig_party_time_block {
+    margin: 16px 0;
+    padding: 12px 0;
+    border-top: 1px dashed #d8c8b8;
+    border-bottom: 1px dashed #d8c8b8;
+}
+
+.orig_time_line {
+    font-size: 13.5px;
+    margin-bottom: 4px;
+    color: #222222;
+}
+
+.orig_honor_text {
+    font-size: 11.5px;
+    color: #444444;
+    letter-spacing: 0.5px;
+    line-height: 1.6;
+    margin-top: 14px;
+}
+
+.orig_signature {
+    font-family: "Pinyon Script", "Great Vibes", cursive;
+    font-size: 38px;
+    color: #a22a2d;
+    margin-top: 12px;
+}
+
+/* Mobile Responsiveness Tweaks */
+@media (max-width: 480px) {
+    .orig_cards_wrapper {
+        width: 100%;
+        padding: 0 4px;
+        gap: 24px;
+    }
+    .orig_card {
+        padding: 28px 14px 24px 14px;
+    }
+    .orig_callig_name {
+        font-size: 32px;
+    }
+    .orig_bride_name, .orig_groom_name {
+        font-size: 34px;
+    }
+    .orig_venue_name {
+        font-size: 44px;
+    }
+    .orig_fam_name {
+        font-size: 10.5px;
+        letter-spacing: -0.3px;
+    }
+    .orig_fam_addr {
+        font-size: 10.5px;
+    }
+    .date_part {
+        font-size: 28px;
+    }
+    .envelope_name {
+        font-size: 36px;
+    }
 }
 
 /* ==========================================================================
@@ -1462,6 +1841,59 @@ animation: flash-shadow 2s infinite;
 .cf_btn:hover {
     transform: translateY(-3px) scale(1.03) !important;
     box-shadow: 0 10px 24px rgba(115, 93, 79, 0.45) !important;
+}
+
+/* ==========================================================================
+   DECORATIVE TRANSITION BANNER BEFORE THANK YOU SECTION
+   ========================================================================== */
+.thank_pre_banner {
+    width: 90%;
+    max-width: 580px;
+    margin: 50px auto 40px auto;
+    text-align: center;
+}
+
+.pre_banner_inner {
+    background: linear-gradient(135deg, #fffdfa 0%, #f6ebe0 100%);
+    border: 1px solid #ebdcd0;
+    border-radius: 20px;
+    padding: 28px 24px 24px 24px;
+    box-shadow: 0 12px 35px rgba(110, 85, 65, 0.1), inset 0 0 0 1px rgba(212, 175, 55, 0.3);
+    position: relative;
+}
+
+.pre_banner_symbol {
+    font-size: 24px;
+    color: #a22a2d;
+    margin-bottom: 10px;
+    line-height: 1;
+}
+
+.pre_banner_quote {
+    font-family: "Noto Serif Display", serif;
+    font-size: 15.5px;
+    font-style: italic;
+    color: #4a382a;
+    line-height: 1.65;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+}
+
+.pre_banner_line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    color: #d4af37;
+    font-size: 12px;
+}
+
+.pre_banner_line::before,
+.pre_banner_line::after {
+    content: "";
+    width: 70px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #d4af37, transparent);
 }
 
 
