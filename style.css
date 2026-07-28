@@ -105,7 +105,7 @@ body {
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url(./source/doc/back_thiep.svg);
+    background-image: url(./source/photos/cover_bg.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -159,76 +159,79 @@ body {
 
 /* Phần 2....................................................... */
 .thiep_date_box {
-    margin-top: 36px;
+    margin-top: 32px;
     position: relative;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     color: white;
+    width: 100%;
 }
 
 .hr-wrapper {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 1px;
-    background-color: white;
-    border: white;
-    width: 200px;
+    display: none;
 }
 
 .thiep_space {
-    height: 32px;
+    height: 12px;
 }
 
 .thiep_date_row {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 16px;
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
 }
 
 .thiep_item {
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
-    width: max-content;
+    justify-content: center;
+    gap: 5px;
+    min-width: 100px;
 }
 
 .thiep_item hr {
     width: 100%;
     border: none;
-    border-top: 1px solid white;
-    margin: 2px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.9);
+    margin: 0;
 }
 
 .thiep_item span {
     font-size: 14px;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
     line-height: 22px;
+    white-space: nowrap;
+    display: block;
+    text-align: center;
 }
 
-.padding_day {
-    padding: 0 12px;
-}
-
-.padding_hour {
-    padding: 0 12px;
+.padding_day, .padding_hour {
+    padding: 0 4px;
 }
 
 .thiep_main_date {
-    font-size: 48px;
+    font-size: 52px;
     font-weight: bold;
     padding: 0 10px;
-    line-height: 40px;
+    line-height: 1;
+    min-width: 65px;
+    text-align: center;
 }
 
 .thiep_month_year {
-    margin-top: 10px;
+    margin-top: 12px;
     font-size: 16px;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    text-align: center;
 }
 
 /* phần 3 */
@@ -259,8 +262,9 @@ body {
 .hr-add {
     margin-top: 18px;
     height: 1px;
-    background-color: white;
-    width: 200px; /* giống hr-wrapper */
+    background-color: rgba(255, 255, 255, 0.7);
+    width: 80%;
+    max-width: 260px;
     margin-left: auto;
     margin-right: auto;
     border: none;

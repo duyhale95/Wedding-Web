@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Tạo Link Thiệp Cưới | Lê Vy & Hoài Bảo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #f4efe9;
+            color: #3b281c;
+            min-height: 100vh;
+            padding: 30px 15px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .admin_container {
+            width: 100%;
+            max-width: 850px;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(90, 70, 55, 0.12);
+            border: 1px solid rgba(196, 160, 71, 0.35);
+            padding: 35px 30px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 1px dashed #d8c8b8;
+            padding-bottom: 20px;
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 26px;
+            color: #5c4737;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .header p {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 18px;
+            color: #8c7360;
+            font-style: italic;
+        }
+
+        .form_section {
+            background: #faf6f0;
+            border: 1px solid #ebdccb;
+            border-radius: 14px;
+            padding: 22px;
+            margin-bottom: 25px;
+        }
+
+        .section_title {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            color: #6a4f3b;
+            font-weight: 700;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .input_group {
+            margin-bottom: 16px;
+        }
+
+        .input_group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #594233;
+            margin-bottom: 6px;
+        }
+
+        .input_control {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #d4c1af;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            background: #ffffff;
+        }
+
+        .input_control:focus {
+            border-color: #a68461;
+            box-shadow: 0 0 0 3px rgba(166, 132, 97, 0.15);
+        }
+
+        textarea.input_control {
+            min-height: 110px;
+            resize: vertical;
+            line-height: 1.5;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #735d4f 0%, #594436 100%);
+            color: #ffffff;
+            border: none;
+            padding: 12px 22px;
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 12px rgba(90, 70, 55, 0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(90, 70, 55, 0.3);
+            background: linear-gradient(135deg, #594436 0%, #423023 100%);
+        }
+
+        .btn_secondary {
+            background: #e8ded4;
+            color: #4a3628;
+            box-shadow: none;
+        }
+
+        .btn_secondary:hover {
+            background: #d8cabb;
+            box-shadow: none;
+        }
+
+        .btn_sm {
+            padding: 7px 12px;
+            font-size: 12.5px;
+            border-radius: 6px;
+        }
+
+        .tab_buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eae0d5;
+            padding-bottom: 10px;
+        }
+
+        .tab_btn {
+            background: transparent;
+            border: none;
+            font-size: 14.5px;
+            font-weight: 600;
+            color: #8c7360;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .tab_btn.active {
+            background: #735d4f;
+            color: #ffffff;
+        }
+
+        .results_table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .results_table th, .results_table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #eae0d5;
+            font-size: 13.5px;
+        }
+
+        .results_table th {
+            background: #f4ece4;
+            font-weight: 700;
+            color: #5c4737;
+        }
+
+        .results_table tr:hover {
+            background: #faf6f0;
+        }
+
+        .url_text {
+            font-family: monospace;
+            font-size: 12.5px;
+            color: #594233;
+            word-break: break-all;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #3b281c;
+            color: #ffffff;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 13.5px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+            display: none;
+            z-index: 10000;
+        }
+
+        .toast.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .badge_count {
+            background: #735d4f;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-left: 6px;
+        }
+
+        .actions_bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="admin_container">
+        <div class="header">
+            <h1>QUẢN LÝ LINK GỬI THIỆP CƯỚI</h1>
+            <p>Dành riêng cho Gia đình Lê Vy & Hoài Bảo</p>
+        </div>
+
+        <!-- Cấu hình Domain / Base URL -->
+        <div class="form_section">
+            <div class="section_title">🌐 Cấu hình địa chỉ Web (Base URL)</div>
+            <div class="input_group">
+                <label for="baseUrlInput">Địa chỉ trang web thiệp chính thức:</label>
+                <input type="text" id="baseUrlInput" class="input_control" placeholder="https://chungdoi.com/i/hoaibao-levy" />
+                <span style="font-size: 11.5px; color: #8c7360; margin-top: 4px; display: block;">
+                    * Mặc định tự động nhận địa chỉ đang chạy. Bạn có thể sửa thành domain thật khi đăng web online.
+                </span>
+            </div>
+        </div>
+
+        <!-- Tab chuyển đổi -->
+        <div class="tab_buttons">
+            <button id="tabSingleBtn" class="tab_btn active">Tạo 1 Khách</button>
+            <button id="tabBatchBtn" class="tab_btn">Tạo Hàng Loạt (Nhiều Khách)</button>
+        </div>
+
+        <!-- Tab 1: Tạo đơn lẻ -->
+        <div id="tabSingle" class="tab_content">
+            <div class="form_section">
+                <div class="section_title">✉️ Tạo link gửi cho 1 khách mời</div>
+                <div class="input_group">
+                    <label for="singleGuestInput">Tên khách mời hiển thị trên thiệp:</label>
+                    <input type="text" id="singleGuestInput" class="input_control" placeholder="Ví dụ: Lớp Tin học K16, Anh Nam & Chị Mai, Gia đình Bác Hùng..." />
+                </div>
+                <button id="btnGenSingle" class="btn">✨ Tạo & Chép Link</button>
+            </div>
+
+            <div id="singleResultBox" style="display: none;" class="form_section">
+                <div class="section_title">🎉 Đường link đã được tạo:</div>
+                <div class="input_group">
+                    <input type="text" id="singleResultUrl" class="input_control url_text" readonly />
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <button id="btnCopySingle" class="btn btn_sm">📋 Chép Link</button>
+                    <button id="btnOpenSingle" class="btn btn_secondary btn_sm">🔗 Mở Xem Thử</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 2: Tạo hàng loạt -->
+        <div id="tabBatch" class="tab_content" style="display: none;">
+            <div class="form_section">
+                <div class="section_title">📝 Nhập danh sách nhiều khách mời</div>
+                <div class="input_group">
+                    <label for="batchGuestsInput">Nhập mỗi khách mời trên 1 dòng:</label>
+                    <textarea id="batchGuestsInput" class="input_control" placeholder="Lớp Tin học K16&#10;Anh Nam & Chị Mai&#10;Gia đình Bác Hùng&#10;Bạn Hoàng (Đại học)"></textarea>
+                </div>
+                <button id="btnGenBatch" class="btn">⚡ Tạo Tất Cả Link</button>
+            </div>
+
+            <div id="batchResultSection" style="display: none;">
+                <div class="actions_bar">
+                    <div class="section_title" style="margin: 0;">
+                        📋 Danh sách link đã tạo <span id="batchCountBadge" class="badge_count">0</span>
+                    </div>
+                    <button id="btnCopyAllBatch" class="btn btn_secondary btn_sm">📋 Copy Tất Cả Link</button>
+                </div>
+
+                <table class="results_table">
+                    <thead>
+                        <tr>
+                            <th style="width: 50px;">STT</th>
+                            <th style="width: 220px;">Tên Khách Mời</th>
+                            <th>Link Gửi Riêng</th>
+                            <th style="width: 140px; text-align: center;">Thao Tác</th>
+                        </tr>
+                    </thead>
+                    <tbody id="batchTableBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast">Đã copy!</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const baseUrlInput = document.getElementById('baseUrlInput');
+            const toast = document.getElementById('toast');
+
+            // Tự động nhận URL gốc hiện tại (ví dụ: http://localhost:8080/index.html)
+            const defaultUrl = window.location.href.replace(/admin\.html.*$/, 'index.html');
+            baseUrlInput.value = defaultUrl;
+
+            function showToast(msg) {
+                toast.textContent = msg;
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 2200);
+            }
+
+            function buildLink(guestName) {
+                let base = baseUrlInput.value.trim();
+                if (!base) base = defaultUrl;
+                try {
+                    const urlObj = new URL(base);
+                    urlObj.searchParams.set('to', guestName);
+                    return urlObj.toString();
+                } catch(e) {
+                    const separator = base.includes('?') ? '&' : '?';
+                    return base + separator + 'to=' + encodeURIComponent(guestName);
+                }
+            }
+
+            // Tab logic
+            const tabSingleBtn = document.getElementById('tabSingleBtn');
+            const tabBatchBtn = document.getElementById('tabBatchBtn');
+            const tabSingle = document.getElementById('tabSingle');
+            const tabBatch = document.getElementById('tabBatch');
+
+            tabSingleBtn.addEventListener('click', () => {
+                tabSingleBtn.classList.add('active');
+                tabBatchBtn.classList.remove('active');
+                tabSingle.style.display = 'block';
+                tabBatch.style.display = 'none';
+            });
+
+            tabBatchBtn.addEventListener('click', () => {
+                tabBatchBtn.classList.add('active');
+                tabSingleBtn.classList.remove('active');
+                tabBatch.style.display = 'block';
+                tabSingle.style.display = 'none';
+            });
+
+            // Single Link Gen
+            const btnGenSingle = document.getElementById('btnGenSingle');
+            const singleGuestInput = document.getElementById('singleGuestInput');
+            const singleResultBox = document.getElementById('singleResultBox');
+            const singleResultUrl = document.getElementById('singleResultUrl');
+            const btnCopySingle = document.getElementById('btnCopySingle');
+            const btnOpenSingle = document.getElementById('btnOpenSingle');
+
+            btnGenSingle.addEventListener('click', () => {
+                const name = singleGuestInput.value.trim();
+                if (!name) {
+                    alert('Vui lòng nhập tên khách mời!');
+                    return;
+                }
+                const link = buildLink(name);
+                singleResultUrl.value = link;
+                singleResultBox.style.display = 'block';
+
+                navigator.clipboard.writeText(link).then(() => {
+                    showToast(`Đã tạo & chép link cho: ${name}`);
+                }).catch(() => {
+                    showToast('Đã tạo link!');
+                });
+            });
+
+            btnCopySingle.addEventListener('click', () => {
+                if (singleResultUrl.value) {
+                    navigator.clipboard.writeText(singleResultUrl.value);
+                    showToast('Đã chép link!');
+                }
+            });
+
+            btnOpenSingle.addEventListener('click', () => {
+                if (singleResultUrl.value) {
+                    window.open(singleResultUrl.value, '_blank');
+                }
+            });
+
+            // Batch Link Gen
+            const btnGenBatch = document.getElementById('btnGenBatch');
+            const batchGuestsInput = document.getElementById('batchGuestsInput');
+            const batchResultSection = document.getElementById('batchResultSection');
+            const batchTableBody = document.getElementById('batchTableBody');
+            const batchCountBadge = document.getElementById('batchCountBadge');
+            const btnCopyAllBatch = document.getElementById('btnCopyAllBatch');
+
+            let generatedList = [];
+
+            btnGenBatch.addEventListener('click', () => {
+                const rawText = batchGuestsInput.value.trim();
+                if (!rawText) {
+                    alert('Vui lòng nhập ít nhất 1 tên khách mời!');
+                    return;
+                }
+
+                const lines = rawText.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+                if (lines.length === 0) return;
+
+                generatedList = [];
+                batchTableBody.innerHTML = '';
+
+                lines.forEach((name, idx) => {
+                    const link = buildLink(name);
+                    generatedList.push({ name, link });
+
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td style="font-weight: 600;">${idx + 1}</td>
+                        <td style="font-weight: 600; color: #3b281c;">${name}</td>
+                        <td><span class="url_text">${link}</span></td>
+                        <td style="text-align: center;">
+                            <button class="btn btn_secondary btn_sm btn_copy_row" data-url="${link}" data-name="${name}">Copy</button>
+                            <button class="btn btn_sm btn_open_row" data-url="${link}">Mở</button>
+                        </td>
+                    `;
+                    batchTableBody.appendChild(tr);
+                });
+
+                batchCountBadge.textContent = lines.length;
+                batchResultSection.style.display = 'block';
+                showToast(`Đã tạo xong ${lines.length} link khách mời!`);
+            });
+
+            document.addEventListener('click', (e) => {
+                if (e.target.classList.contains('btn_copy_row')) {
+                    const url = e.target.dataset.url;
+                    const name = e.target.dataset.name;
+                    navigator.clipboard.writeText(url).then(() => {
+                        showToast(`Đã chép link cho: ${name}`);
+                    });
+                }
+                if (e.target.classList.contains('btn_open_row')) {
+                    const url = e.target.dataset.url;
+                    window.open(url, '_blank');
+                }
+            });
+
+            btnCopyAllBatch.addEventListener('click', () => {
+                if (generatedList.length === 0) return;
+                const fullText = generatedList.map(item => `${item.name}: ${item.link}`).join('\n');
+                navigator.clipboard.writeText(fullText).then(() => {
+                    showToast(`Đã chép toàn bộ ${generatedList.length} link!`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

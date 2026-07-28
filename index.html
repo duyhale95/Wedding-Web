@@ -1,19 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wedding Ngọc Lan & Nguyễn Tiến</title>
+    <title>Wedding Lê Vy & Hoài Bảo</title>
     <link rel="stylesheet" href="./style.css?v=19.9">
     <link rel="stylesheet" href="./style2.css?v=19.9">
     <script src="js.js?v=19.9"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Newsreader:opsz,wght@6..72,500&family=Noto+Serif+Display&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:ital,wght@0,300..700;1,300..700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Newsreader:opsz,wght@6..72,500&family=Noto+Serif+Display&display=swap"
+        rel="stylesheet">
 
-    <meta property="og:title" content="Lễ Thành Hôn Ngọc Lan & Nguyễn Tiến"/>
-    <meta property="og:description" content="Thiệp mời dự Lễ Thành Hôn"/>
+    <meta property="og:title" content="Lễ Vu Quy Lê Vy & Hoài Bảo" />
+    <meta property="og:description"
+        content="Kính mời quý khách đến dự lễ cưới của Lê Vy & Hoài Bảo | Chủ Nhật, 13 tháng 9, 2026 | Nhà Hàng Century, Pleiku, Gia Lai" />
     <meta property="og:image" content="https://thiepcuoitienlan.id.vn/source/meta.jpg" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://thiepcuoitienlan.id.vn" />
@@ -29,18 +33,52 @@
 </head>
 
 
-<audio id="myAudio" autoplay>
+<audio id="myAudio" loop preload="auto">
     <source src="./source/music.mp3" type="audio/mpeg">
     Trình duyệt của bạn không hỗ trợ audio.
 </audio>
 
+<body>
+    <!-- Canvas cánh hoa rơi & hiệu ứng lung linh -->
+    <canvas id="petalsCanvas"></canvas>
 
+    <!-- Floating Nút Tắt/Mở Nhạc Sang Trọng -->
+    <button id="musicControlBtn" class="music_control_btn playing" aria-label="Bật/Tắt nhạc">
+        <div class="music_disc">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="music_icon icon_playing">
+                <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
+            </svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" class="music_icon icon_paused">
+                <path
+                    d="M4.27 3L3 4.27l9 9v.28c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4v-1.73l4.27 4.27c-.4.24-.86.41-1.37.46V21h.1c2.21 0 4-1.79 4-4v-2.73l3.73 3.73L20.73 21 4.27 3zM14 7h4V3h-6v5.18l2 2V7z" />
+            </svg>
+        </div>
+        <div class="music_waves">
+            <span></span><span></span><span></span>
+        </div>
+    </button>
 
-<body>      
-    <div id="audioIndicator">
-        <img src="./source/volume.svg" alt="">
-        
+    <!-- ENVELOPE LANDING OVERLAY (Matching Image 1) -->
+    <div id="envelopeOverlay">
+        <div class="envelope_card">
+            <div class="envelope_heart_badge">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26">
+                    <path
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                </svg>
+            </div>
+            <h1 class="envelope_title gold_shimmer">Lê Vy</h1>
+            <div class="envelope_ampersand">&</div>
+            <h1 class="envelope_title gold_shimmer">Hoài Bảo</h1>
+            <div class="envelope_ornament">~ ❦ ~</div>
+            <div class="envelope_date">13 tháng 9, 2026</div>
+            <div class="envelope_invitation_label">Thân Mời</div>
+            <div id="envelopeGuestName" class="guest_pill_box">Quý khách</div>
+            <div class="envelope_subtext">Đến dự buổi tiệc chung vui cùng gia đình</div>
+            <button id="btnOpenEnvelope" class="btn_open_envelope">Mở thiệp</button>
+        </div>
     </div>
+
     <!-- thiệp -->
     <div class="thiep">
         <div class="thiep_blur-bg">
@@ -51,99 +89,180 @@
                 </div>
                 <!-- Phần 1 -->
                 <div class="thiep_name">
-                    <p class="font_thanh_dam">Nguyễn Tiến</p>
+                    <p class="font_thanh_dam gold_shimmer">Hoài Bảo</p>
                     <p class="font_thanh_dam thiep_small">&</p>
-                    <p class="font_thanh_dam">Ngọc Lan</p>
+                    <p class="font_thanh_dam gold_shimmer">Lê Vy</p>
                 </div>
                 <!-- Phần 2 -->
                 <div class="thiep_date_box font_thanh_dam">
                     <hr class="hr-wrapper">
                     <div class="thiep_space"></div>
                     <div class="thiep_date_row">
-                      <div class="thiep_item">
-                        <hr>
-                        <span class="padding_day">THỨ BA</span>
-                        <hr>
-                      </div>
-                      <div class="thiep_main_date">29</div>
-                      <div class="thiep_item">
-                        <hr>
-                        <span class="padding_hour">11H00</span>
-                        <hr>
-                      </div>
+                        <div class="thiep_item">
+                            <hr>
+                            <span class="padding_day">CHỦ NHẬT</span>
+                            <hr>
+                        </div>
+                        <div class="thiep_main_date">13</div>
+                        <div class="thiep_item">
+                            <hr>
+                            <span class="padding_hour">11H00</span>
+                            <hr>
+                        </div>
                     </div>
-                    <div class="thiep_month_year">04.2025</div>
-                  </div>
-                  
+                    <div class="thiep_month_year">09.2026</div>
+                </div>
+
                 <!-- Phần 3 -->
                 <div class="thiep_add">
                     <p class="font_fancy add_fancy">Địa điểm tổ chức</p>
-                    <p class="font_thanh_dam add_big">GIA ĐÌNH NHÀ TRAI</p>
-                    <p class="font_thanh_dam add_small">Thôn 12 - Xã Quỳnh Vinh</p>
-                    <p class="font_thanh_dam add_small">Thị xã Hoàng Mai - Tỉnh Nghệ An </p>
+                    <p class="font_thanh_dam add_big">NHÀ HÀNG CENTURY</p>
+                    <p class="font_thanh_dam add_small">Sảnh Queen (Tầng 1)</p>
+                    <p class="font_thanh_dam add_small">170 Đường Wừu - Pleiku - Gia Lai</p>
                     <hr class="hr-add">
                 </div>
 
                 <!-- phần icon -->
                 <div class="thiep_all_icon">
-                    <a class="thiep_map" href="https://maps.app.goo.gl/xfMHyt22JnTG3dLf8">
-                        <img src="./source/pin_map.svg" alt="">
+                    <a class="thiep_map"
+                        href="https://maps.google.com/?q=Nh%C3%A0+H%C3%A0ng+Century,+170+W%E1%BB%ABu,+Pleiku,+Gia+Lai"
+                        target="_blank" rel="noopener noreferrer">
+                        <img src="./source/pin_map.svg" alt="Bản đồ">
                     </a>
                 </div>
-                    
-                
+
             </div>
 
         </div>
-    
+
     </div>
 
-    <div class="gt_container">
-        <div class="gt_des font_montserrat"> Giới thiệu </div>
-        <div class="gt_des2 font_thanh_dam"> Chú Rể và Cô Dâu </div>
-        <div class="gt_img">
-            <img src="./source/re.svg" alt="">
-            <!-- <p class="caption font_thanh_dam">Nguyễn Tiến</p> -->
+    <!-- Đếm ngược ngày cưới -->
+    <div class="countdown_section reveal_element reveal_scale">
+        <div class="countdown_header">Cùng đếm ngược thời gian</div>
+        <div class="countdown_subheader">Đến ngày chung đôi 13.09.2026</div>
+        <div class="countdown_grid">
+            <div class="countdown_box">
+                <div id="cdDays" class="countdown_num">00</div>
+                <div class="countdown_label">Ngày</div>
+            </div>
+            <div class="countdown_box">
+                <div id="cdHours" class="countdown_num">00</div>
+                <div class="countdown_label">Giờ</div>
+            </div>
+            <div class="countdown_box">
+                <div id="cdMins" class="countdown_num">00</div>
+                <div class="countdown_label">Phút</div>
+            </div>
+            <div class="countdown_box">
+                <div id="cdSecs" class="countdown_num">00</div>
+                <div class="countdown_label">Giây</div>
+            </div>
         </div>
-        <div class="gt_img">
-            <img src="./source/dau.svg" alt="">
-            <!-- <p class="caption font_thanh_dam">Ngọc Lan</p> -->
+    </div>
+
+    <!-- REFINED FAMILY SECTION (Matching Image 2) -->
+    <div class="gt_container">
+        <div class="gt_des font_montserrat">Giới thiệu</div>
+        <div class="gt_des2 font_thanh_dam">Chú Rể và Cô Dâu</div>
+
+        <div class="wedding_info_card reveal_element reveal_scale">
+            <!-- Corner Gold Flourishes -->
+            <div class="corner_flourish corner_tl"></div>
+            <div class="corner_flourish corner_tr"></div>
+            <div class="corner_flourish corner_bl"></div>
+            <div class="corner_flourish corner_br"></div>
+
+            <div class="wedding_info_title">THÔNG TIN LỄ CƯỚI</div>
+            <div class="gold_line_ornament"><span>❦</span></div>
+
+            <div class="family_columns_wrapper">
+                <div class="family_col">
+                    <p class="family_role">Ông Bà</p>
+                    <p class="family_name">Hà Văn Thảo</p>
+                    <p class="family_name">Lê Thị Xuân Thủy</p>
+                    <p class="family_address">45 Nguyễn An Ninh, Diên Hồng, Gia Lai</p>
+                </div>
+                <div class="family_col_divider"></div>
+                <div class="family_col">
+                    <p class="family_role">Ông Bà</p>
+                    <p class="family_name">Nguyễn Huỳnh Thanh Trọng</p>
+                    <p class="family_name">Nguyễn Thị Kim Hồng</p>
+                    <p class="family_address">360C KP4 Tân Vạn, Biên Hòa, TP. Đồng Nai</p>
+                </div>
+            </div>
+
+            <div class="announce_box">
+                <p class="announce_sub">TRÂN TRỌNG BÁO TIN</p>
+                <p class="announce_main">LỄ THÀNH HÔN CỦA CON CHÚNG TÔI</p>
+
+                <div class="couple_names_display">
+                    <div>
+                        <span class="couple_name_big gold_shimmer">Hà Lê Vy</span>
+                        <span class="couple_role_inline">(TRƯỞNG NỮ)</span>
+                    </div>
+
+                    <div class="couple_ampersand_mark">&</div>
+
+                    <div>
+                        <span class="couple_name_big gold_shimmer">Nguyễn Huỳnh Hoài Bảo</span>
+                        <span class="couple_role_inline">(TRƯỜNG NAM)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="gt_img reveal_element reveal_left">
+            <img src="./source/photos/couple_1.jpg" alt="Chú rể Hoài Bảo & Cô dâu Lê Vy">
+        </div>
+        <div class="gt_img reveal_element reveal_right">
+            <img src="./source/photos/couple_2.jpg" alt="Hoài Bảo & Lê Vy">
         </div>
 
     </div>
 
 
     <!-- Mời -->
-    <div class="moi_container">
+    <div class="moi_container reveal_element">
         <div class="moi_desc1 font_fancy">Thư mời</div>
-        <div class="moi_desc2 font_tnr">Tham dự Lễ cưới của Nguyễn Tiến & Ngọc Lan</div>
+        <div class="moi_desc2 font_tnr">Tham dự Lễ cưới của Hoài Bảo & Lê Vy</div>
         <div class="moi_img">
-            <img class="img_small js_l js_left" src="./source/doc/xanh_1.svg" alt="">
-            <img class="img_big js_center" src="./source/doc/xanh_2.svg" alt="">
-            <img class="img_small js_r js_right" src="./source/doc/xanh_3_lat.svg" alt="">            
+            <img class="img_small js_l js_left" src="./source/photos/dsc05714.jpg" alt="Lê Vy & Hoài Bảo">
+            <img class="img_big js_center" src="./source/photos/dsc05822.jpg" alt="Lê Vy & Hoài Bảo">
+            <img class="img_small js_r js_right" src="./source/photos/dsc05769.jpg" alt="Lê Vy & Hoài Bảo">
         </div>
 
-        <div class="moi_desc3 font_tnr">   Tình yêu là nguồn sáng soi rọi mọi khoảnh khắc. 
-            Và những khoảnh khắc ấy đã trở thành vĩnh cửu khi chúng tôi quyết định dành 
-            trọn quãng đời còn lại bên nhau. Chúng tôi, bằng cả tấm lòng, xin chân thành 
-            mời bạn đến chung vui trong ngày lễ trọng đại này. Sự hiện diện của bạn sẽ  
-            làm cho ngày vui của chúng tôi càng thêm phần ý nghĩa!</div>
+        <div class="moi_desc3 font_tnr"> Tình yêu là nguồn sáng soi rọi mọi khoảnh khắc.
+            Và những khoảnh khắc ấy đã trở thành vĩnh cửu khi chúng tôi quyết định dành
+            trọn quãng đời còn lại bên nhau. Chúng tôi, bằng cả tấm lòng, xin chân thành
+            mời bạn đến chung vui trong ngày lễ trọng đại này. Sự hiện diện của quý khách sẽ
+            làm cho ngày vui của chúng tôi càng thêm phần ý nghĩa và trọn vẹn!</div>
     </div>
 
     <!-- confirm -->
-    <div class="cf_container nhay-shadow">
-        <div class="cf_desc1">Lễ Thành Hôn</div>
-        <div class="cf_desc2">Thứ Ba | 11h00</div>
-        <div class="cf_desc3">29.04.2025</div>
-        <div class="cf_desc4">(Tức Ngày 2 Tháng 4 Năm Ất Tỵ)</div>
-        <button class="cf_btn font_tnr">
-            <a href="https://forms.gle/7zeeJpgnDbF1wN2F8">Xác nhận tham dự</a>
-        </button>
-        <button class="cf_btn js_qr font_tnr">
-            Gửi quà mừng
+    <div class="cf_container nhay-shadow reveal_element">
+        <div class="cf_desc1">LỄ VU QUY</div>
+        <div class="cf_desc2">Chủ Nhật | 08h00</div>
+        <div class="cf_desc3">13.09.2026</div>
+        <div class="cf_desc4">(Tức Ngày 3 Tháng 8 Năm Bính Ngọ)</div>
+        <div style="font-size: 13.5px; color: #444; margin-bottom: 16px; font-family: 'Times New Roman', serif;">Tư gia
+            nhà gái: 45 Nguyễn An Ninh, Diên Hồng, Gia Lai</div>
+
+        <hr style="border: none; border-top: 1px dashed #b5d5d0; margin: 16px 0;">
+
+        <div class="cf_desc1">TIỆC CƯỚI - LỄ THÀNH HÔN</div>
+        <div class="cf_desc2">Chủ Nhật | 11h00</div>
+        <div class="cf_desc3">13.09.2026</div>
+        <div class="cf_desc4">(Tức Ngày 3 Tháng 8 Năm Bính Ngọ)</div>
+        <div style="font-size: 13.5px; color: #444; margin-bottom: 16px; font-family: 'Times New Roman', serif;">Nhà
+            Hàng Century, Sảnh Queen (Tầng 1)<br>170 Đường Wừu, Pleiku, Gia Lai</div>
+
+        <button class="cf_btn font_tnr"
+            onclick="window.open('https://maps.google.com/?q=Nh%C3%A0+H%C3%A0ng+Century,+170+W%E1%BB%ABu,+Pleiku,+Gia+Lai', '_blank')">
+            Xem bản đồ chỉ đường
         </button>
     </div>
-    
+
     <!-- pop-up -->
     <div class="popup">
         <div class="popup_container hide-horizontal-scrollbar">
@@ -160,67 +279,52 @@
     <!-- album -->
     <div id="copy-toast">Đã copy!</div>
 
-    <div class="album_header">
+    <div class="album_header reveal_element">
         <span>Album ảnh cưới</span>
         <div class="line"></div>
     </div>
-    <div class="album_container">
-        <img class="js_album album_left" src="./source/ngang/cam_n_1.svg" alt="">
-        <img class="js_album album_left" src="./source/doc/xam_1.svg" alt="">
-        <img class="js_album album_left" src="./source/doc/xanh_hon.svg" alt="">
-        <img class="js_album album_left" src="./source/ngang/do_n.svg" alt="">
-        <img class="js_album album_left" src="./source/doc/xanh_2.svg" alt="">
-        <img class="js_album album_left" src="./source/doc/cam_2.svg" alt="">
-        <!-- <img class="js_album album_left" src="./source/doc/cam_3.svg" alt=""> -->
-        <img class="js_album album_right" src="./source/doc/xanh_3.svg" alt="">
-        <img class="js_album album_right" src="./source/doc/do.svg" alt="">
-        <img class="js_album album_right" src="./source/ngang/xam_n.svg" alt=""> 
-        <img class="js_album album_right" src="./source/doc/cam_4.svg" alt="">
-        <img class="js_album album_right" src="./source/doc/xam_3.svg" alt="">
-        <!-- <img class="js_album album_right" src="./source/doc/cam_5.svg" alt=""> -->
-        <img class="js_album album_right" src="./source/ngang/xanh_n.svg" alt="">
-        
+    <div class="album_container reveal_element">
+        <img class="js_album album_left" src="./source/photos/dsc05695.jpg" alt="Ảnh cưới Hoài Bảo & Lê Vy">
+        <img class="js_album album_left" src="./source/photos/ac4.jpg" alt="Ảnh cưới Hoài Bảo & Lê Vy">
+        <img class="js_album album_left" src="./source/photos/dsc05732.jpg" alt="Ảnh cưới Hoài Bảo & Lê Vy">
+        <img class="js_album album_left" src="./source/photos/dsc05785.jpg" alt="Ảnh cưới Hoài Bảo & Lê Vy">
+        <img class="js_album album_left" src="./source/photos/dsc05809.jpg" alt="Ảnh cưới Hoài Bảo & Lê Vy">
+        <img class="js_album album_left" src="./source/photos/dsc05877.jpg" alt="Ảnh cưới Hoài Bảo & Lê Vy">
+        <img class="js_album album_right" src="./source/photos/dsc05900.jpg" alt="Ảnh cưới Hoài Bảo & Lê Vy">
+        <img class="js_album album_right" src="./source/photos/dsc05923.jpg" alt="Ảnh cưới Hoài Bảo & Lê Vy">
+        <img class="js_album album_right" src="./source/photos/dsc05931.jpg" alt="Ảnh cưới Hoài Bảo & Lê Vy">
+        <img class="js_album album_right" src="./source/photos/dsc05951.jpg" alt="Ảnh cưới Hoài Bảo & Lê Vy">
+        <img class="js_album album_right" src="./source/photos/dsc05981.jpg" alt="Ảnh cưới Hoài Bảo & Lê Vy">
+        <img class="js_album album_right" src="./source/photos/dsc05995.jpg" alt="Ảnh cưới Hoài Bảo & Lê Vy">
+        <img class="js_album album_right" src="./source/photos/dsc06004.jpg" alt="Ảnh cưới Hoài Bảo & Lê Vy">
     </div>
 
     <!-- Thanks -->
     <div class="thank_container">
-        
+
         <div class="thank_desc">
             <img src="./source/thank.svg" alt="">
             <p>Rất hân hạnh được đón tiếp!</p>
         </div>
         <div class="footter">
-            © 04/2025 Website by Nguyen Van Hoang | 
-            <a href="https://thiepcuoitienlan.id.vn/" class="footer-link" target="_blank" rel="noopener noreferrer">thiepcuoitienlan.id.vn</a>
+            © 09/2026 Website | Lê Vy & Hoài Bảo
         </div>
     </div>
-    
+
+    <!-- Lightbox Xem Album Ảnh Khổ Lớn -->
+    <div id="galleryLightbox">
+        <button id="btnLightboxClose" class="lightbox_close">&times;</button>
+        <button id="btnLightboxPrev" class="lightbox_btn lightbox_btn_prev">&#10094;</button>
+        <img id="lightboxImg" class="lightbox_img" src="" alt="Ảnh cưới khổ lớn" />
+        <button id="btnLightboxNext" class="lightbox_btn lightbox_btn_next">&#10095;</button>
+    </div>
+
 
 </body>
+
 </html>
 
 <script>
-    window.addEventListener('DOMContentLoaded', () => {
-        const items = document.querySelectorAll('.thiep_item');
-    const container = document.querySelector('.thiep_date_box');
-    if (items.length === 2 && container) {
-      const left = items[0].getBoundingClientRect().left;
-      const right = items[1].getBoundingClientRect().right;
-      const containerLeft = container.getBoundingClientRect().left;
-      const width = right - left;
-
-      const hr = document.querySelector('.hr-wrapper');
-      hr.style.width = width + 'px';
-      hr.style.left = (left - containerLeft) + 'px';
-      hr.style.transform = 'none';
-
-      const hr_add = document.querySelector('.hr-add');
-      hr_add.style.width = width + 'px';
-      hr_add.style.left = (left - containerLeft) + 'px';
-      hr_add.style.transform = 'none';
-      }
-    });
-
     const btn_qr = document.querySelector('.js_qr')
     const pop_up = document.querySelector('.popup')
     const pop_up_ctn = document.querySelector('.popup_container')
@@ -237,10 +341,10 @@
 
     btn_qr.addEventListener('click', show_pop_up)
     pop_up.addEventListener('click', hide_pop_up)
-    pop_up_item1.addEventListener('click', function(event) {
+    pop_up_item1.addEventListener('click', function (event) {
         event.stopPropagation();
     })
-    pop_up_item2.addEventListener('click', function(event) {
+    pop_up_item2.addEventListener('click', function (event) {
         event.stopPropagation();
     })
 
@@ -269,7 +373,7 @@
         toast.classList.add('show');
         setTimeout(() => {
             toast.classList.remove('show');
-        }, 1000);   
+        }, 1000);
     }
 
     document.querySelectorAll('.copy').forEach(copyBtn => {
@@ -277,9 +381,9 @@
             const text = this.dataset.copy;
             navigator.clipboard.writeText(text).then(() => {
                 showToast();
-            console.log(`Đã copy: ${text}`);
+                console.log(`Đã copy: ${text}`);
             }).catch(err => {
-            console.error('Copy thất bại: ', err);
+                console.error('Copy thất bại: ', err);
             });
         });
     });
@@ -288,4 +392,3 @@
 
 
 </script>
-  

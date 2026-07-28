@@ -367,7 +367,7 @@ animation: flash-shadow 2s infinite;
 .thank_container {
     height: 100vh;
     width: 100%;
-    background-image: url(./source/doc/cam_dep.svg);
+    background-image: url(./source/photos/thank_bg.jpg);
     position: relative;
     overflow: hidden;
     background-repeat: no-repeat;
@@ -445,3 +445,1024 @@ animation: flash-shadow 2s infinite;
     transform: scale(1.1);
     text-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
 }
+
+/* ==========================================================================
+   ENVELOPE LANDING OVERLAY (Matching Image 1)
+   ========================================================================== */
+#envelopeOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at center, #f5ebe1 0%, #e6d5c5 100%);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s;
+}
+
+#envelopeOverlay.opened {
+    opacity: 0;
+    transform: scale(1.08) translateY(-30px);
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.envelope_card {
+    position: relative;
+    width: 100%;
+    max-width: 460px;
+    background: #fdfbf7;
+    border-radius: 20px;
+    padding: 42px 28px 36px 28px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(90, 70, 55, 0.22), inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+    border: 1px solid #e2d2c1;
+    overflow: hidden;
+    animation: cardFloat 4s ease-in-out infinite;
+}
+
+@keyframes cardFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+.envelope_heart_badge {
+    width: 52px;
+    height: 52px;
+    background: #735d4f;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px auto;
+    color: white;
+    font-size: 22px;
+    box-shadow: 0 6px 16px rgba(115, 93, 79, 0.35);
+}
+
+.envelope_title {
+    font-family: "Noto Serif Display", serif;
+    font-size: 34px;
+    color: #5c4738;
+    margin-bottom: 2px;
+    font-weight: 500;
+}
+
+.envelope_ampersand {
+    font-family: "Alex Brush", cursive;
+    font-size: 26px;
+    color: #8c7362;
+    margin: 0;
+}
+
+.envelope_ornament {
+    font-size: 16px;
+    color: #a89281;
+    margin: 6px 0 12px 0;
+    letter-spacing: 3px;
+}
+
+.envelope_date {
+    font-family: "Noto Serif Display", serif;
+    font-size: 17px;
+    color: #7a6352;
+    margin-bottom: 12px;
+}
+
+.envelope_invitation_label {
+    font-family: "Alex Brush", cursive;
+    font-size: 26px;
+    color: #8c6e58;
+    margin-bottom: 10px;
+}
+
+.guest_pill_box {
+    display: inline-block;
+    background: #f0e6da;
+    color: #4a382a;
+    font-family: "Noto Serif Display", serif;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 8px 24px;
+    border-radius: 25px;
+    margin-bottom: 14px;
+    border: 1px solid #dfcfbe;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.envelope_subtext {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 14.5px;
+    color: #786658;
+    margin-bottom: 24px;
+    font-style: italic;
+}
+
+.btn_open_envelope {
+    background: #735d4f;
+    color: white;
+    font-family: "Noto Serif Display", serif;
+    font-size: 17px;
+    font-weight: 500;
+    padding: 12px 38px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(115, 93, 79, 0.4);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+}
+
+.btn_open_envelope:hover {
+    background: #5d493d;
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 22px rgba(115, 93, 79, 0.5);
+}
+
+.btn_open_envelope:active {
+    transform: translateY(1px) scale(0.97);
+}
+
+/* ==========================================================================
+   REFINED "THÔNG TIN LỄ CƯỚI" FAMILY SECTION (Matching Image 2)
+   ========================================================================== */
+.wedding_info_card {
+    width: 90%;
+    max-width: 620px;
+    margin: 30px auto;
+    background: rgba(253, 250, 245, 0.95);
+    border: 1px solid #e6d8c8;
+    border-radius: 18px;
+    padding: 32px 24px 28px 24px;
+    box-shadow: 0 10px 30px rgba(100, 80, 65, 0.08);
+    font-family: "Noto Serif Display", serif;
+    text-align: center;
+    color: #4a392c;
+}
+
+.wedding_info_title {
+    font-size: 21px;
+    font-weight: 600;
+    color: #6a4f3b;
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+}
+
+.family_columns_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.family_col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.family_col_divider {
+    width: 1px;
+    background: #d8c8b8;
+    margin: 4px 0;
+}
+
+.family_role {
+    font-size: 13.5px;
+    color: #8c7360;
+    margin-bottom: 4px;
+}
+
+.family_name {
+    font-size: 15.5px;
+    font-weight: bold;
+    color: #423023;
+    line-height: 1.45;
+}
+
+.family_address {
+    font-size: 11.5px;
+    color: #7d6b5c;
+    margin-top: 6px;
+    line-height: 1.35;
+    max-width: 220px;
+}
+
+.announce_box {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px dashed #d8c8b8;
+}
+
+.announce_sub {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    color: #7d6857;
+    margin-bottom: 4px;
+}
+
+.announce_main {
+    font-size: 13.5px;
+    letter-spacing: 1px;
+    color: #5c4737;
+    margin-bottom: 18px;
+    font-weight: 500;
+}
+
+.couple_names_display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.couple_name_big {
+    font-size: 28px;
+    color: #3b281b;
+    font-weight: 400;
+
+}
+
+.couple_role_tag {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #8c7360;
+    margin-top: -4px;
+}
+
+/* ==========================================================================
+   COUNTDOWN TIMER WIDGET
+   ========================================================================== */
+.countdown_section {
+    width: 90%;
+    max-width: 580px;
+    margin: 35px auto 25px auto;
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 18px;
+    padding: 24px 18px;
+    border: 1px solid #ebdcd0;
+    box-shadow: 0 8px 24px rgba(120, 95, 75, 0.08);
+    text-align: center;
+}
+
+.countdown_header {
+    font-family: "Alex Brush", cursive;
+    font-size: 32px;
+    color: #735d4f;
+    margin-bottom: 2px;
+}
+
+.countdown_subheader {
+    font-family: "Noto Serif Display", serif;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    color: #8c7360;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.countdown_grid {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.countdown_box {
+    flex: 1;
+    max-width: 90px;
+    background: #f7f1eb;
+    border: 1px solid #e6d6c6;
+    border-radius: 14px;
+    padding: 12px 4px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    transition: transform 0.2s ease;
+}
+
+.countdown_num {
+    font-family: "Noto Serif Display", serif;
+    font-size: 28px;
+    font-weight: bold;
+    color: #594233;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.countdown_label {
+    font-family: "Montserrat", sans-serif;
+    font-size: 11px;
+    color: #8c7665;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   PERSONALIZED LINK GENERATOR MODAL & FLOATING BUTTON
+   ========================================================================== */
+.btn_floating_gen {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #735d4f;
+    color: white;
+    font-family: "Noto Serif Display", serif;
+    font-size: 13.5px;
+    padding: 10px 18px;
+    border-radius: 30px;
+    border: none;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+}
+
+.btn_floating_gen:hover {
+    background: #5a4639;
+    transform: translateY(-2px) scale(1.04);
+}
+
+#linkGenModal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(4px);
+    z-index: 100000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+#linkGenModal.show {
+    display: flex;
+}
+
+.link_gen_card {
+    background: #ffffff;
+    width: 100%;
+    max-width: 440px;
+    border-radius: 18px;
+    padding: 26px 24px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    text-align: center;
+    position: relative;
+    font-family: "Noto Serif Display", serif;
+}
+
+.link_gen_title {
+    font-size: 19px;
+    color: #5c4737;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.link_gen_desc {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 18px;
+    line-height: 1.45;
+}
+
+.link_gen_input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid #d4c4b4;
+    border-radius: 10px;
+    font-size: 15px;
+    outline: none;
+    margin-bottom: 14px;
+    font-family: "Noto Serif Display", serif;
+    transition: border-color 0.2s;
+}
+
+.link_gen_input:focus {
+    border-color: #735d4f;
+}
+
+.btn_create_link {
+    width: 100%;
+    background: #735d4f;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-family: "Noto Serif Display", serif;
+}
+
+.btn_create_link:hover {
+    background: #594436;
+}
+
+.btn_close_gen {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    background: transparent;
+    border: none;
+    font-size: 22px;
+    color: #888;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   LUXURY & ANIMATION UPGRADES
+   ========================================================================== */
+
+/* Petals Canvas Background */
+#petalsCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 999;
+}
+
+/* Gold Shimmer Text Effect */
+.gold_shimmer {
+    background: linear-gradient(135deg, #594233 0%, #a68461 40%, #c4a785 50%, #a68461 60%, #594233 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: goldShimmer 5s ease-in-out infinite;
+}
+
+@keyframes goldShimmer {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Scroll Reveal Classes */
+.reveal_element {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.reveal_element.reveal_left {
+    transform: translateX(-45px);
+}
+
+.reveal_element.reveal_right {
+    transform: translateX(45px);
+}
+
+.reveal_element.reveal_scale {
+    transform: scale(0.92);
+}
+
+.reveal_element.active {
+    opacity: 1;
+    transform: translateY(0) translateX(0) scale(1);
+}
+
+/* Luxury Card Glows & Gold Borders */
+.thiep_blur-bg {
+    box-shadow: 0 20px 45px rgba(80, 60, 45, 0.2), inset 0 0 0 1px rgba(255, 235, 205, 0.3) !important;
+}
+
+.wedding_info_card {
+    border: 1px solid rgba(195, 160, 125, 0.45) !important;
+    background: rgba(253, 250, 246, 0.95) !important;
+    box-shadow: 0 15px 35px rgba(110, 85, 65, 0.08), inset 0 0 12px rgba(230, 210, 190, 0.15) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.wedding_info_card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #c4a785, transparent);
+}
+
+.cf_container {
+    border: 1px solid rgba(195, 160, 125, 0.4) !important;
+    background: rgba(250, 246, 240, 0.95) !important;
+}
+
+.countdown_section {
+    border: 1px solid rgba(195, 160, 125, 0.4) !important;
+    background: rgba(253, 250, 246, 0.95) !important;
+    box-shadow: 0 12px 30px rgba(100, 80, 65, 0.07) !important;
+}
+
+/* Photo Gallery Enhancements & Lightbox */
+.album_container > img {
+    border-radius: 14px;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.album_container > img:hover {
+    transform: scale(1.03) translateY(-4px) !important;
+    box-shadow: 0 14px 28px rgba(90, 70, 55, 0.22) !important;
+}
+
+#galleryLightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 12, 10, 0.92);
+    backdrop-filter: blur(8px);
+    z-index: 100001;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#galleryLightbox.show {
+    display: flex;
+    opacity: 1;
+}
+
+.lightbox_img {
+    max-width: 92vw;
+    max-height: 88vh;
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.lightbox_btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-size: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.2s;
+    backdrop-filter: blur(4px);
+}
+
+.lightbox_btn:hover {
+    background: rgba(255, 255, 255, 0.35);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.lightbox_btn_prev { left: 16px; }
+.lightbox_btn_next { right: 16px; }
+
+.lightbox_close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+}
+
+.lightbox_close:hover {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+/* ==========================================================================
+   MUSIC CONTROL BUTTON (DEV NÚT TẮT MỞ NHẠC)
+   ========================================================================== */
+.music_control_btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 99999;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(115, 93, 79, 0.85);
+    border: 1.5px solid rgba(255, 235, 205, 0.6);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 20px rgba(90, 70, 55, 0.35);
+    backdrop-filter: blur(8px);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    outline: none;
+}
+
+.music_control_btn:hover {
+    transform: scale(1.1);
+    background: rgba(93, 73, 61, 0.95);
+    box-shadow: 0 8px 24px rgba(90, 70, 55, 0.45);
+}
+
+.music_control_btn:active {
+    transform: scale(0.95);
+}
+
+.music_disc {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.music_icon {
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.music_control_btn.playing .icon_playing {
+    opacity: 1;
+    transform: scale(1);
+    animation: spinDisc 4s linear infinite;
+}
+
+.music_control_btn.playing .icon_paused {
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+.music_control_btn.paused .icon_playing {
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+.music_control_btn.paused .icon_paused {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.music_control_btn.paused {
+    background: rgba(120, 120, 120, 0.75);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+@keyframes spinDisc {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Music Equalizer Waves */
+.music_waves {
+    position: absolute;
+    bottom: -6px;
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 10px;
+}
+
+.music_waves span {
+    width: 2px;
+    height: 8px;
+    background: #f5e4d5;
+    border-radius: 1px;
+    opacity: 0;
+}
+
+.music_control_btn.playing .music_waves span {
+    opacity: 1;
+    animation: waveBounce 1.2s ease-in-out infinite alternate;
+}
+
+.music_control_btn.playing .music_waves span:nth-child(1) { animation-delay: 0s; }
+.music_control_btn.playing .music_waves span:nth-child(2) { animation-delay: 0.3s; }
+.music_control_btn.playing .music_waves span:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes waveBounce {
+    0% { height: 2px; }
+    100% { height: 10px; }
+}
+
+/* ==========================================================================
+   HIGH-END EDITORIAL LUXURY TYPOGRAPHY & CARDS
+   ========================================================================== */
+.font_cormorant {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font_playfair {
+    font-family: 'Playfair Display', Georgia, serif;
+}
+
+.wedding_info_card {
+    width: 95% !important;
+    max-width: 660px !important;
+    margin: 35px auto !important;
+    background: linear-gradient(145deg, #ffffff 0%, #faf4eb 50%, #f6ede2 100%) !important;
+    border: 1.5px solid #d4af37 !important;
+    outline: 1px solid rgba(212, 175, 55, 0.4) !important;
+    outline-offset: -7px !important;
+    border-radius: 20px !important;
+    padding: 38px 20px 32px 20px !important;
+    box-shadow: 0 18px 45px rgba(90, 70, 55, 0.12), inset 0 0 25px rgba(255, 255, 255, 0.8) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.wedding_info_card::after {
+    content: "❦";
+    position: absolute;
+    bottom: -15px;
+    right: 15px;
+    font-size: 80px;
+    color: rgba(184, 147, 100, 0.04);
+    pointer-events: none;
+}
+
+/* Corner Flourishes */
+.corner_flourish {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border-color: #c4a047;
+    border-style: solid;
+    pointer-events: none;
+}
+
+.corner_tl { top: 12px; left: 12px; border-width: 2px 0 0 2px; }
+.corner_tr { top: 12px; right: 12px; border-width: 2px 2px 0 0; }
+.corner_bl { bottom: 12px; left: 12px; border-width: 0 0 2px 2px; }
+.corner_br { bottom: 12px; right: 12px; border-width: 0 2px 2px 0; }
+
+.wedding_info_title {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: 21px !important;
+    font-weight: 600 !important;
+    color: #6a4f3b !important;
+    letter-spacing: 3px !important;
+    margin-bottom: 8px !important;
+    text-transform: uppercase;
+}
+
+.gold_line_ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.gold_line_ornament span {
+    color: #c4a047;
+    font-size: 16px;
+    padding: 0 10px;
+}
+
+.family_columns_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.family_col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 2px;
+}
+
+.family_col_divider {
+    width: 1px;
+    height: 120px;
+    background: linear-gradient(180deg, transparent, #c4a047, transparent);
+    margin: 4px 0;
+    align-self: center;
+}
+
+.family_role {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 13.5px;
+    color: #947863;
+    margin-bottom: 6px;
+    font-style: italic;
+}
+
+.family_name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #3b281c;
+    line-height: 1.35;
+    white-space: nowrap;
+    word-break: keep-all;
+    text-align: center;
+}
+
+.family_address {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    color: #7d6b5c;
+    margin-top: 8px;
+    line-height: 1.4;
+    max-width: 250px;
+    text-align: center;
+}
+
+@media (max-width: 520px) {
+    .family_name {
+        font-size: 15.5px;
+    }
+}
+
+.announce_box {
+    margin-top: 22px;
+    padding-top: 22px;
+    border-top: 1px dashed rgba(196, 160, 71, 0.4);
+}
+
+.announce_sub {
+    font-family: 'Playfair Display', serif;
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    color: #8c7360;
+    margin-bottom: 4px;
+}
+
+.announce_main {
+    font-family: 'Playfair Display', serif;
+    font-size: 13.5px;
+    letter-spacing: 2px;
+    color: #5c4737;
+    margin-bottom: 18px;
+    font-weight: 600;
+}
+
+.couple_names_display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.couple_name_big {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 30px !important;
+    font-weight: 600 !important;
+    color: #3b281b;
+    letter-spacing: 1px;
+}
+
+.couple_role_inline {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10.5px;
+    letter-spacing: 2px;
+    color: #8c7360;
+    margin-left: 6px;
+    font-weight: 500;
+    vertical-align: middle;
+}
+
+.couple_ampersand_mark {
+    font-family: 'Alex Brush', cursive;
+    font-size: 28px;
+    color: #c4a047;
+    margin: 0;
+}
+
+
+/* Thư mời Card Styling */
+.moi_container {
+    width: 92%;
+    max-width: 620px;
+    margin: 40px auto;
+    background: rgba(253, 250, 246, 0.95);
+    border: 1px solid rgba(184, 147, 100, 0.35);
+    border-radius: 20px;
+    padding: 38px 24px;
+    box-shadow: 0 14px 32px rgba(90, 70, 55, 0.08);
+    text-align: center;
+}
+
+.moi_desc1 {
+    font-family: 'Alex Brush', cursive;
+    font-size: 44px;
+    color: #735d4f;
+    margin-bottom: 2px;
+}
+
+.moi_desc2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 13.5px;
+    letter-spacing: 2.5px;
+    color: #8c7360;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+}
+
+.moi_desc3 {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 19px !important;
+    line-height: 1.65 !important;
+    color: #5c4738 !important;
+    font-style: italic !important;
+    max-width: 520px;
+    margin: 26px auto 0 auto !important;
+    text-align: center !important;
+    text-indent: 0 !important;
+}
+
+/* Event Details Dual Card */
+.cf_container {
+    width: 92% !important;
+    max-width: 620px !important;
+    margin: 38px auto 65px auto !important;
+    background: linear-gradient(145deg, #fdfbf7 0%, #f5efe6 100%) !important;
+    border: 1px solid rgba(184, 147, 100, 0.4) !important;
+    border-radius: 20px !important;
+    padding: 35px 24px !important;
+    box-shadow: 0 16px 36px rgba(90, 70, 55, 0.1) !important;
+}
+
+.cf_desc1 {
+    font-family: 'Playfair Display', serif !important;
+    font-size: 21px !important;
+    font-weight: 700 !important;
+    color: #5c4737 !important;
+    letter-spacing: 2px !important;
+}
+
+.cf_desc2 {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 18.5px !important;
+    font-weight: 600 !important;
+    color: #7a6352 !important;
+}
+
+.cf_desc3 {
+    font-family: 'Playfair Display', serif !important;
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    color: #423023 !important;
+    letter-spacing: 3px !important;
+}
+
+.cf_desc4 {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 16.5px !important;
+    font-style: italic !important;
+    color: #7d6b5c !important;
+}
+
+.cf_btn {
+    background: linear-gradient(135deg, #735d4f 0%, #594436 100%) !important;
+    color: white !important;
+    font-family: 'Playfair Display', serif !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    letter-spacing: 1px !important;
+    padding: 13px 30px !important;
+    border-radius: 30px !important;
+    box-shadow: 0 6px 18px rgba(115, 93, 79, 0.35) !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    margin-top: 10px !important;
+    width: auto !important;
+    min-width: 220px !important;
+}
+
+.cf_btn:hover {
+    transform: translateY(-3px) scale(1.03) !important;
+    box-shadow: 0 10px 24px rgba(115, 93, 79, 0.45) !important;
+}
+
+
+
