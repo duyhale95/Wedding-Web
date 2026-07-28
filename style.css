@@ -105,13 +105,13 @@ body {
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url("./source/photos/dsc05695.jpg") !important;
+    background-image: url("./source/photos/couple_2.jpg") !important;
     background-size: cover;
-    background-position: center 30%;
+    background-position: center 25%;
     background-repeat: no-repeat;
     animation: zoomInOut 12s ease-in-out infinite;
     z-index: 0;
-    transform-origin: center 30%;
+    transform-origin: center 25%;
 }
 
 .thiep::after {
