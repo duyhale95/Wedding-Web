@@ -267,15 +267,31 @@
             <h1>QUẢN LÝ LINK GỬI THIỆP CƯỚI</h1>
             <p>Dành riêng cho Gia đình Lê Vy & Hoài Bảo</p>
         </div>
-        <!-- Link Xem Thiệp Trực Tiếp -->
-        <div
-            style="background: #faf6f0; padding: 16px; border-radius: 12px; border: 1px solid #ebdccb; margin-bottom: 25px;">
-            <div style="font-size: 13.5px; font-weight: 700; color: #594233; margin-bottom: 10px;">🚀 Xem Thiệp Trực Tiếp (Không cần tên khách):</div>
-            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                <button id="btnOpenDirectNhatrai" class="btn btn_sm" style="background: linear-gradient(135deg, #a22a2d 0%, #761618 100%);">🔗 Xem Thiệp Nhà Trai</button>
-                <button id="btnCopyDirectNhatrai" class="btn btn_sm btn_secondary">📋 Copy Link Nhà Trai</button>
-                <button id="btnOpenDirectNhagai" class="btn btn_sm" style="background: linear-gradient(135deg, #b8860b 0%, #8c6509 100%);">🔗 Xem Thiệp Nhà Gái</button>
-                <button id="btnCopyDirectNhagai" class="btn btn_sm btn_secondary">📋 Copy Link Nhà Gái</button>
+
+        <!-- Cấu hình Domain / Base URL -->
+        <div class="form_section">
+            <div class="section_title">🌐 Cấu hình Tên Domain Gốc (Base Domain)</div>
+            <div class="input_group">
+                <label for="baseUrlInput">Tên Domain Gốc của Website:</label>
+                <input type="text" id="baseUrlInput" class="input_control"
+                    placeholder="https://hoaibao-levy.vercel.app/" />
+                <span style="font-size: 11.5px; color: #8c7360; margin-top: 4px; display: block;">
+                    * Mặc định hệ thống tự nhận domain gốc. Link sẽ tự động ghép <strong>/nhatrai</strong> hoặc
+                    <strong>/nhagai</strong> khi xuất thiệp.
+                </span>
+            </div>
+
+            <!-- Link Xem Thiệp Trực Tiếp -->
+            <div
+                style="background: #ffffff; padding: 14px; border-radius: 10px; border: 1px solid #e5d8cb; margin-top: 14px;">
+                <div style="font-size: 13px; font-weight: 700; color: #594233; margin-bottom: 8px;">🚀 Xem Thiệp Trực
+                    Tiếp (Không cần tên khách):</div>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <button id="btnCopyDirectNhatrai" class="btn btn_sm btn_secondary">📋 Copy Link Nhà Trai
+                        (/nhatrai)</button>
+                    <button id="btnCopyDirectNhagai" class="btn btn_sm btn_secondary">📋 Copy Link Nhà Gái
+                        (/nhagai)</button>
+                </div>
             </div>
         </div>
 
@@ -292,13 +308,15 @@
                 <div class="input_group">
                     <label for="singleGuestInput">Tên khách mời hiển thị trên thiệp:</label>
                     <input type="text" id="singleGuestInput" class="input_control"
-                        placeholder="Ví dụ: Lớp Tin học K16, Anh Nam & Chị Mai, Gia đình Bác Hùng..." />
+                        placeholder="Ví dụ: Anh Nam & Chị Mai, Gia đình Bác Hùng..." />
                 </div>
                 <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px;">
                     <button id="btnGenSingleNhatrai" class="btn"
-                        style="background: linear-gradient(135deg, #a22a2d 0%, #761618 100%);">🔴 Tạo Link Nhà Trai</button>
+                        style="background: linear-gradient(135deg, #a22a2d 0%, #761618 100%);">🔴 Tạo Link Nhà
+                        Trai</button>
                     <button id="btnGenSingleNhagai" class="btn"
-                        style="background: linear-gradient(135deg, #b8860b 0%, #8c6509 100%);">🌸 Tạo Link Nhà Gái</button>
+                        style="background: linear-gradient(135deg, #b8860b 0%, #8c6509 100%);">🌸 Tạo Link Nhà
+                        Gái</button>
                 </div>
             </div>
 
@@ -325,9 +343,11 @@
                 </div>
                 <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px;">
                     <button id="btnGenBatchNhatrai" class="btn"
-                        style="background: linear-gradient(135deg, #a22a2d 0%, #761618 100%);">🔴 Tạo Tất Cả Link Nhà Trai</button>
+                        style="background: linear-gradient(135deg, #a22a2d 0%, #761618 100%);">🔴 Tạo Tất Cả Link Nhà
+                        Trai</button>
                     <button id="btnGenBatchNhagai" class="btn"
-                        style="background: linear-gradient(135deg, #b8860b 0%, #8c6509 100%);">🌸 Tạo Tất Cả Link Nhà Gái</button>
+                        style="background: linear-gradient(135deg, #b8860b 0%, #8c6509 100%);">🌸 Tạo Tất Cả Link Nhà
+                        Gái</button>
                 </div>
             </div>
 
@@ -364,9 +384,7 @@
 
             // Tự động lấy Domain gốc chuẩn
             let defaultUrl = window.location.origin + '/';
-            if (baseUrlInput) {
-                baseUrlInput.value = defaultUrl;
-            }
+            baseUrlInput.value = defaultUrl;
 
             function showToast(msg) {
                 toast.textContent = msg;
@@ -377,7 +395,8 @@
             }
 
             function buildLinkForSide(side, guestName) {
-                let base = (baseUrlInput && baseUrlInput.value.trim()) ? baseUrlInput.value.trim() : defaultUrl;
+                let base = baseUrlInput.value.trim();
+                if (!base) base = defaultUrl;
                 if (!base.endsWith('/')) base += '/';
 
                 let cleanDomain = base.replace(/(nhatrai|nhagai)(\.html)?\/?$/, '');
@@ -397,16 +416,9 @@
                 }
             }
 
-            // Quick Copy & Preview Direct Buttons
-            document.getElementById('btnOpenDirectNhatrai').addEventListener('click', () => {
-                let base = (baseUrlInput && baseUrlInput.value.trim()) ? baseUrlInput.value.trim() : defaultUrl;
-                if (!base.endsWith('/')) base += '/';
-                const link = base + 'nhatrai';
-                window.open(link, '_blank');
-            });
-
+            // Quick Copy Direct Buttons
             document.getElementById('btnCopyDirectNhatrai').addEventListener('click', () => {
-                let base = (baseUrlInput && baseUrlInput.value.trim()) ? baseUrlInput.value.trim() : defaultUrl;
+                let base = baseUrlInput.value.trim() || defaultUrl;
                 if (!base.endsWith('/')) base += '/';
                 const link = base + 'nhatrai';
                 navigator.clipboard.writeText(link).then(() => {
@@ -414,15 +426,8 @@
                 });
             });
 
-            document.getElementById('btnOpenDirectNhagai').addEventListener('click', () => {
-                let base = (baseUrlInput && baseUrlInput.value.trim()) ? baseUrlInput.value.trim() : defaultUrl;
-                if (!base.endsWith('/')) base += '/';
-                const link = base + 'nhagai';
-                window.open(link, '_blank');
-            });
-
             document.getElementById('btnCopyDirectNhagai').addEventListener('click', () => {
-                let base = (baseUrlInput && baseUrlInput.value.trim()) ? baseUrlInput.value.trim() : defaultUrl;
+                let base = baseUrlInput.value.trim() || defaultUrl;
                 if (!base.endsWith('/')) base += '/';
                 const link = base + 'nhagai';
                 navigator.clipboard.writeText(link).then(() => {
