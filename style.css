@@ -54,11 +54,17 @@
 html {
     scroll-behavior: smooth;
     background-color: #f0f8ff;
-    overflow-x: hidden;
+    overflow-x: hidden !important;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100% !important;
+    -moz-text-size-adjust: 100% !important;
+    -ms-text-size-adjust: 100% !important;
+    text-size-adjust: 100% !important;
+    width: 100%;
+    max-width: 100%;
 }
 
 * {
@@ -78,13 +84,19 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    overflow-x: hidden;
+    overflow-x: hidden !important;
+    -webkit-text-size-adjust: 100% !important;
+    -moz-text-size-adjust: 100% !important;
+    -ms-text-size-adjust: 100% !important;
+    text-size-adjust: 100% !important;
 }
 
 .thiep {
     position: relative;
     width: 100%;
+    max-width: 100%;
     overflow: hidden;
+    contain: paint;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
