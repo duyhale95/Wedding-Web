@@ -193,7 +193,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Countdown Timer logic
 document.addEventListener('DOMContentLoaded', () => {
-    const weddingDate = new Date('2026-09-13T11:00:00+07:00').getTime();
+    const isNhatrai = document.body.getAttribute('data-side') === 'nhatrai' || 
+                      window.location.pathname.includes('nhatrai') || 
+                      new URLSearchParams(window.location.search).get('side') === 'nhatrai' ||
+                      new URLSearchParams(window.location.search).has('nhatrai');
+
+    // Nhà Trai: 19.09.2026 17:00 | Nhà Gái: 13.09.2026 11:00
+    const targetDateStr = isNhatrai ? '2026-09-19T17:00:00+07:00' : '2026-09-13T11:00:00+07:00';
+    const weddingDate = new Date(targetDateStr).getTime();
 
     const daysEl = document.getElementById('cdDays');
     const hoursEl = document.getElementById('cdHours');

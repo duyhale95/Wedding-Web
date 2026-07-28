@@ -2,6 +2,10 @@
   "version": 2,
   "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    { "source": "/nhatrai", "destination": "/nhatrai.html" },
+    { "source": "/nhagai", "destination": "/nhagai.html" }
+  ],
   "headers": [
     {
       "source": "/(.*)",
