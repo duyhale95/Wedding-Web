@@ -366,7 +366,9 @@
 
             // Tự động lấy Domain gốc chuẩn
             let defaultUrl = window.location.origin + '/';
-            baseUrlInput.value = defaultUrl;
+            if (baseUrlInput) {
+                baseUrlInput.value = defaultUrl;
+            }
 
             function showToast(msg) {
                 toast.textContent = msg;
@@ -377,8 +379,7 @@
             }
 
             function buildLinkForSide(side, guestName) {
-                let base = baseUrlInput.value.trim();
-                if (!base) base = defaultUrl;
+                let base = (baseUrlInput && baseUrlInput.value.trim()) ? baseUrlInput.value.trim() : defaultUrl;
                 if (!base.endsWith('/')) base += '/';
 
                 let cleanDomain = base.replace(/(nhatrai|nhagai)(\.html)?\/?$/, '');
@@ -400,7 +401,7 @@
 
             // Quick Copy Direct Buttons
             document.getElementById('btnCopyDirectNhatrai').addEventListener('click', () => {
-                let base = baseUrlInput.value.trim() || defaultUrl;
+                let base = (baseUrlInput && baseUrlInput.value.trim()) ? baseUrlInput.value.trim() : defaultUrl;
                 if (!base.endsWith('/')) base += '/';
                 const link = base + 'nhatrai';
                 navigator.clipboard.writeText(link).then(() => {
@@ -409,7 +410,7 @@
             });
 
             document.getElementById('btnCopyDirectNhagai').addEventListener('click', () => {
-                let base = baseUrlInput.value.trim() || defaultUrl;
+                let base = (baseUrlInput && baseUrlInput.value.trim()) ? baseUrlInput.value.trim() : defaultUrl;
                 if (!base.endsWith('/')) base += '/';
                 const link = base + 'nhagai';
                 navigator.clipboard.writeText(link).then(() => {
