@@ -687,60 +687,46 @@ body[data-side="nhagai"] .thank_dot {
     font-style: italic;
 }
 
-/* Prompt Hint & Animated Bouncing Arrow */
-.envelope_prompt_wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 14px;
-    gap: 4px;
-}
-
-.envelope_prompt_hint {
+/* Compact Flashing Notification Text (Thông báo nhỏ gọn nhấp nháy mạnh) */
+.envelope_prompt_text_flash {
     font-family: "Noto Serif Display", serif;
-    font-size: 13.5px;
-    font-weight: 600;
-    color: #8c1e20;
-    letter-spacing: 0.5px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    animation: promptPulse 2s ease-in-out infinite;
-}
-
-.envelope_prompt_hint .sparkle_icon {
     font-size: 13px;
-    animation: sparkleSpin 3s linear infinite;
-}
-
-.envelope_arrow_bounce {
-    display: flex;
+    font-weight: 700;
+    color: #8c1e20;
+    letter-spacing: 0.6px;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: #d4af37;
-    animation: arrowBounce 1.5s ease-in-out infinite;
+    gap: 6px;
+    margin: 4px auto 14px auto;
+    padding: 5px 14px;
+    border-radius: 15px;
+    background: rgba(253, 248, 240, 0.75);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    user-select: none;
+    pointer-events: none; /* Khối thông báo không can thiệp bấm */
+    animation: intenseFlashPulse 0.9s infinite alternate cubic-bezier(0.4, 0, 0.6, 1);
 }
 
-@keyframes arrowBounce {
-    0%, 100% {
-        transform: translateY(0);
-        opacity: 0.75;
-    }
-    50% {
-        transform: translateY(5px);
-        opacity: 1;
-    }
+.envelope_prompt_text_flash .sparkle_icon {
+    font-size: 13px;
+    animation: sparkleSpin 2s linear infinite;
 }
 
-@keyframes promptPulse {
-    0%, 100% {
-        opacity: 0.85;
-        transform: scale(0.98);
+@keyframes intenseFlashPulse {
+    0% {
+        opacity: 0.35;
+        transform: scale(0.97);
+        color: #7a181a;
+        box-shadow: 0 0 0px transparent;
+        text-shadow: 0 0 0px transparent;
     }
-    50% {
+    100% {
         opacity: 1;
-        transform: scale(1.02);
+        transform: scale(1.03);
+        color: #d12226;
+        box-shadow: 0 2px 12px rgba(212, 175, 55, 0.4);
+        text-shadow: 0 0 10px rgba(212, 175, 55, 0.9), 0 0 18px rgba(230, 40, 45, 0.6);
     }
 }
 
@@ -748,6 +734,93 @@ body[data-side="nhagai"] .thank_dot {
     0% { transform: scale(0.9) rotate(0deg); }
     50% { transform: scale(1.25) rotate(15deg); }
     100% { transform: scale(0.9) rotate(0deg); }
+}
+
+/* Action Area Wrapper (Bao bọc nút mở thiệp và ngón tay chỉ từ dưới lên) */
+.envelope_action_wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 6px;
+    margin-bottom: 22px; /* Dành khoảng trống bên dưới cho ngón tay chỉ lên */
+}
+
+/* Tilted Hand Pointer Container (Ngón tay đặt phía DƯỚI chỉ nghiêng TỪ DƯỚI LÊN) */
+.hand_tap_animation_tilted {
+    position: absolute;
+    bottom: -32px;
+    right: 18px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* SVG Hand Icon Tilted & Pointing UPWARDS */
+.hand_tap_svg_tilted {
+    width: 38px;
+    height: 38px;
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.3));
+    /* Hand tilted -25deg pointing UPWARDS from below into the button */
+    animation: tiltedTapUpGesture 1.5s infinite cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: 2;
+}
+
+/* Concentric Ripple Rings at fingertip touching the button from below */
+.hand_tap_animation_tilted .tap_ripple_ring {
+    position: absolute;
+    top: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    border: 2px solid #d4af37;
+    background: rgba(212, 175, 55, 0.35);
+    pointer-events: none;
+    z-index: 1;
+    animation: rippleExpand 1.5s infinite cubic-bezier(0, 0.2, 0.8, 1);
+}
+
+.hand_tap_animation_tilted .tap_ripple_ring.ring1 { animation-delay: 0s; }
+.hand_tap_animation_tilted .tap_ripple_ring.ring2 { animation-delay: 0.45s; }
+.hand_tap_animation_tilted .tap_ripple_ring.ring3 { animation-delay: 0.9s; }
+
+/* Tilted Tap UP Animation Keyframes (Gõ từ dưới lên nút) */
+@keyframes tiltedTapUpGesture {
+    0%, 100% {
+        transform: rotate(-25deg) translate(0, 0) scale(1);
+    }
+    35% {
+        transform: rotate(-25deg) translate(2px, 6px) scale(1.06); /* Thụt xuống dưới */
+    }
+    55% {
+        transform: rotate(-25deg) translate(-3px, -5px) scale(0.92); /* Gõ thẳng từ dưới lên nút */
+    }
+    75% {
+        transform: rotate(-25deg) translate(1px, 2px) scale(1.02);
+    }
+}
+
+/* Keyframes for Ripple Expansion */
+@keyframes rippleExpand {
+    0% {
+        width: 6px;
+        height: 6px;
+        opacity: 1;
+        box-shadow: 0 0 6px #d4af37;
+    }
+    80% {
+        opacity: 0.6;
+    }
+    100% {
+        width: 44px;
+        height: 44px;
+        opacity: 0;
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0);
+    }
 }
 
 /* Luxury Shiny / Glowing / Glossy Open Envelope Button */
@@ -850,6 +923,201 @@ body[data-side="nhagai"] .thank_dot {
 
 .btn_open_envelope:hover .btn_open_arrow {
     transform: translateX(4px);
+}
+
+/* Animated Scroll Down Indicator on Main Cover Page */
+.scroll_down_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 28px auto 12px auto;
+    gap: 4px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 0.3s ease;
+}
+
+.scroll_down_wrapper:hover {
+    transform: translateY(4px);
+}
+
+.scroll_down_text {
+    font-family: "Noto Serif Display", serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #e6c565;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    animation: scrollTextGlow 2s infinite ease-in-out;
+}
+
+.scroll_down_chevron_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: -2px;
+    height: 34px;
+    position: relative;
+}
+
+.scroll_down_chevron_box .chevron_down {
+    width: 22px;
+    height: 22px;
+    stroke: #d4af37;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.35));
+    animation: chevronCascading 1.5s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+.scroll_down_chevron_box .chevron_down.c1 {
+    margin-bottom: -12px;
+    animation-delay: 0s;
+}
+
+.scroll_down_chevron_box .chevron_down.c2 {
+    animation-delay: 0.35s;
+    opacity: 0.75;
+}
+
+@keyframes scrollTextGlow {
+    0%, 100% {
+        opacity: 0.75;
+        letter-spacing: 1.5px;
+        transform: scale(0.98);
+    }
+    50% {
+        opacity: 1;
+        letter-spacing: 2px;
+        color: #ffffff;
+        text-shadow: 0 0 12px rgba(212, 175, 55, 0.9), 0 0 20px rgba(255, 230, 150, 0.6);
+        transform: scale(1.03);
+    }
+}
+
+@keyframes chevronCascading {
+    0% {
+        transform: translateY(-4px) scale(0.9);
+        opacity: 0.25;
+    }
+    50% {
+        transform: translateY(4px) scale(1.1);
+        opacity: 1;
+        stroke: #fff0aa;
+    }
+    100% {
+        transform: translateY(11px) scale(0.9);
+        opacity: 0.15;
+    }
+}
+
+/* Floating Mobile Scroll Circle Button on Bottom Right (Nằm nhỏ xinh bên phải) */
+.fixed_scroll_indicator {
+    position: fixed;
+    bottom: 22px;
+    right: 18px;
+    left: auto;
+    transform: none;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background: linear-gradient(135deg, rgba(255, 252, 245, 0.96) 0%, rgba(255, 244, 230, 0.98) 100%);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1.5px solid #d4af37;
+    border-radius: 50%;
+    box-shadow: 0 4px 18px rgba(140, 30, 32, 0.25), 0 0 12px rgba(212, 175, 55, 0.4);
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease, box-shadow 0.35s ease;
+    animation: floatingBobRight 2.4s infinite ease-in-out;
+}
+
+.fixed_scroll_indicator:hover,
+.fixed_scroll_indicator:active {
+    transform: scale(1.1);
+    box-shadow: 0 6px 24px rgba(140, 30, 32, 0.35), 0 0 18px rgba(212, 175, 55, 0.6);
+}
+
+.fixed_scroll_indicator .scroll_down_chevron_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0;
+    height: 24px;
+    position: relative;
+}
+
+.fixed_scroll_indicator .chevron_down {
+    width: 17px;
+    height: 17px;
+    stroke: #8c1e20;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+    animation: chevronCascadingSmall 1.5s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+.fixed_scroll_indicator .chevron_down.c1 {
+    margin-bottom: -10px;
+    animation-delay: 0s;
+}
+
+.fixed_scroll_indicator .chevron_down.c2 {
+    animation-delay: 0.35s;
+    opacity: 0.75;
+}
+
+@keyframes chevronCascadingSmall {
+    0% {
+        transform: translateY(-2px) scale(0.9);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translateY(3px) scale(1.08);
+        opacity: 1;
+        stroke: #c92a2e;
+    }
+    100% {
+        transform: translateY(7px) scale(0.9);
+        opacity: 0.15;
+    }
+}
+
+.fixed_scroll_indicator.hide_indicator {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.8);
+    pointer-events: none;
+}
+
+@keyframes floatingBobRight {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes scrollTextGlowBright {
+    0%, 100% {
+        opacity: 0.85;
+        transform: scale(0.98);
+        color: #8c1e20;
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.03);
+        color: #c92a2e;
+        text-shadow: 0 0 8px rgba(212, 175, 55, 0.8);
+    }
 }
 
 /* ==========================================================================

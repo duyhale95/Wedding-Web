@@ -176,10 +176,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const envelopeOverlay = document.getElementById('envelopeOverlay');
     const btnOpenEnvelope = document.getElementById('btnOpenEnvelope');
+    const envelopeActionWrapper = document.querySelector('.envelope_action_wrapper');
     const audio = document.getElementById('myAudio');
 
-    if (btnOpenEnvelope && envelopeOverlay) {
-        btnOpenEnvelope.addEventListener('click', () => {
+    function openEnvelope() {
+        if (envelopeOverlay && !envelopeOverlay.classList.contains('opened')) {
             envelopeOverlay.classList.add('opened');
             setTimeout(() => {
                 envelopeOverlay.style.display = 'none';
@@ -187,7 +188,14 @@ document.addEventListener('DOMContentLoaded', () => {
             if (audio) {
                 audio.play().catch(e => console.log('Audio autoplay prevented:', e));
             }
-        });
+        }
+    }
+
+    if (btnOpenEnvelope) {
+        btnOpenEnvelope.addEventListener('click', openEnvelope);
+    }
+    if (envelopeActionWrapper) {
+        envelopeActionWrapper.addEventListener('click', openEnvelope);
     }
 });
 
@@ -382,6 +390,54 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'ArrowLeft') showPrev();
         if (e.key === 'ArrowRight') showNext();
     });
+});
+
+// Smooth scroll and floating scroll indicator logic
+document.addEventListener('DOMContentLoaded', () => {
+    const scrollDownHint = document.getElementById('scrollDownHint');
+    const fixedIndicator = document.getElementById('fixedScrollIndicator');
+    const envelopeOverlay = document.getElementById('envelopeOverlay');
+
+    if (scrollDownHint) {
+        scrollDownHint.addEventListener('click', () => {
+            const nextSection = document.querySelector('.countdown_section') || document.querySelector('.gt_des');
+            if (nextSection) {
+                nextSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+
+    if (fixedIndicator) {
+        // If envelope overlay is present and not opened, hide fixed indicator initially
+        if (envelopeOverlay && !envelopeOverlay.classList.contains('opened')) {
+            fixedIndicator.style.display = 'none';
+        }
+
+        // Show fixed indicator when envelope is opened
+        const btnOpenEnvelope = document.getElementById('btnOpenEnvelope');
+        const envelopeActionWrapper = document.querySelector('.envelope_action_wrapper');
+        const showFixedIndicator = () => {
+            fixedIndicator.style.display = 'flex';
+        };
+        if (btnOpenEnvelope) btnOpenEnvelope.addEventListener('click', showFixedIndicator);
+        if (envelopeActionWrapper) envelopeActionWrapper.addEventListener('click', showFixedIndicator);
+
+        // Click on floating indicator to scroll down 75% screen height
+        fixedIndicator.addEventListener('click', () => {
+            window.scrollBy({ top: window.innerHeight * 0.75, behavior: 'smooth' });
+        });
+
+        // Hide floating indicator when user scrolls near the bottom of the page
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY + window.innerHeight;
+            const totalHeight = document.documentElement.scrollHeight;
+            if (scrollPosition >= totalHeight - 200) {
+                fixedIndicator.classList.add('hide_indicator');
+            } else {
+                fixedIndicator.classList.remove('hide_indicator');
+            }
+        });
+    }
 });
 
 
