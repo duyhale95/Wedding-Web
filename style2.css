@@ -704,7 +704,8 @@ body[data-side="nhagai"] .thank_dot {
     background: rgba(253, 248, 240, 0.75);
     border: 1px solid rgba(212, 175, 55, 0.4);
     user-select: none;
-    pointer-events: none; /* Khối thông báo không can thiệp bấm */
+    pointer-events: none;
+    /* Khối thông báo không can thiệp bấm */
     animation: intenseFlashPulse 0.9s infinite alternate cubic-bezier(0.4, 0, 0.6, 1);
 }
 
@@ -721,6 +722,7 @@ body[data-side="nhagai"] .thank_dot {
         box-shadow: 0 0 0px transparent;
         text-shadow: 0 0 0px transparent;
     }
+
     100% {
         opacity: 1;
         transform: scale(1.03);
@@ -731,9 +733,17 @@ body[data-side="nhagai"] .thank_dot {
 }
 
 @keyframes sparkleSpin {
-    0% { transform: scale(0.9) rotate(0deg); }
-    50% { transform: scale(1.25) rotate(15deg); }
-    100% { transform: scale(0.9) rotate(0deg); }
+    0% {
+        transform: scale(0.9) rotate(0deg);
+    }
+
+    50% {
+        transform: scale(1.25) rotate(15deg);
+    }
+
+    100% {
+        transform: scale(0.9) rotate(0deg);
+    }
 }
 
 /* Action Area Wrapper (Bao bọc nút mở thiệp và ngón tay chỉ từ dưới lên) */
@@ -743,7 +753,8 @@ body[data-side="nhagai"] .thank_dot {
     align-items: center;
     justify-content: center;
     margin-top: 6px;
-    margin-bottom: 22px; /* Dành khoảng trống bên dưới cho ngón tay chỉ lên */
+    margin-bottom: 22px;
+    /* Dành khoảng trống bên dưới cho ngón tay chỉ lên */
 }
 
 /* Tilted Hand Pointer Container (Ngón tay đặt phía DƯỚI chỉ nghiêng TỪ DƯỚI LÊN) */
@@ -784,21 +795,36 @@ body[data-side="nhagai"] .thank_dot {
     animation: rippleExpand 1.5s infinite cubic-bezier(0, 0.2, 0.8, 1);
 }
 
-.hand_tap_animation_tilted .tap_ripple_ring.ring1 { animation-delay: 0s; }
-.hand_tap_animation_tilted .tap_ripple_ring.ring2 { animation-delay: 0.45s; }
-.hand_tap_animation_tilted .tap_ripple_ring.ring3 { animation-delay: 0.9s; }
+.hand_tap_animation_tilted .tap_ripple_ring.ring1 {
+    animation-delay: 0s;
+}
+
+.hand_tap_animation_tilted .tap_ripple_ring.ring2 {
+    animation-delay: 0.45s;
+}
+
+.hand_tap_animation_tilted .tap_ripple_ring.ring3 {
+    animation-delay: 0.9s;
+}
 
 /* Tilted Tap UP Animation Keyframes (Gõ từ dưới lên nút) */
 @keyframes tiltedTapUpGesture {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: rotate(-25deg) translate(0, 0) scale(1);
     }
+
     35% {
-        transform: rotate(-25deg) translate(2px, 6px) scale(1.06); /* Thụt xuống dưới */
+        transform: rotate(-25deg) translate(2px, 6px) scale(1.06);
+        /* Thụt xuống dưới */
     }
+
     55% {
-        transform: rotate(-25deg) translate(-3px, -5px) scale(0.92); /* Gõ thẳng từ dưới lên nút */
+        transform: rotate(-25deg) translate(-3px, -5px) scale(0.92);
+        /* Gõ thẳng từ dưới lên nút */
     }
+
     75% {
         transform: rotate(-25deg) translate(1px, 2px) scale(1.02);
     }
@@ -812,9 +838,11 @@ body[data-side="nhagai"] .thank_dot {
         opacity: 1;
         box-shadow: 0 0 6px #d4af37;
     }
+
     80% {
         opacity: 0.6;
     }
+
     100% {
         width: 44px;
         height: 44px;
@@ -870,14 +898,12 @@ body[data-side="nhagai"] .thank_dot {
     left: -75%;
     width: 50%;
     height: 200%;
-    background: linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(255, 255, 255, 0.1) 20%,
-        rgba(255, 255, 255, 0.75) 50%,
-        rgba(255, 255, 255, 0.1) 80%,
-        transparent 100%
-    );
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.1) 20%,
+            rgba(255, 255, 255, 0.75) 50%,
+            rgba(255, 255, 255, 0.1) 80%,
+            transparent 100%);
     transform: rotate(25deg);
     animation: shimmerSweep 2.8s infinite ease-in-out;
     pointer-events: none;
@@ -887,16 +913,21 @@ body[data-side="nhagai"] .thank_dot {
     0% {
         left: -80%;
     }
-    40%, 100% {
+
+    40%,
+    100% {
         left: 140%;
     }
 }
 
 @keyframes buttonGlowPulse {
-    0%, 100% {
+
+    0%,
+    100% {
         box-shadow: 0 8px 24px rgba(162, 42, 45, 0.45), 0 0 12px rgba(212, 175, 55, 0.3);
         border-color: #d4af37;
     }
+
     50% {
         box-shadow: 0 12px 32px rgba(184, 46, 50, 0.65), 0 0 24px rgba(212, 175, 55, 0.75);
         border-color: #fff0aa;
@@ -983,11 +1014,14 @@ body[data-side="nhagai"] .thank_dot {
 }
 
 @keyframes scrollTextGlow {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 0.75;
         letter-spacing: 1.5px;
         transform: scale(0.98);
     }
+
     50% {
         opacity: 1;
         letter-spacing: 2px;
@@ -1002,11 +1036,13 @@ body[data-side="nhagai"] .thank_dot {
         transform: translateY(-4px) scale(0.9);
         opacity: 0.25;
     }
+
     50% {
         transform: translateY(4px) scale(1.1);
         opacity: 1;
         stroke: #fff0aa;
     }
+
     100% {
         transform: translateY(11px) scale(0.9);
         opacity: 0.15;
@@ -1194,9 +1230,11 @@ body[data-side="nhagai"] .scroll_node.active .node_dot {
     0% {
         box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.6);
     }
+
     70% {
         box-shadow: 0 0 0 8px rgba(212, 175, 55, 0);
     }
+
     100% {
         box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
     }
@@ -1277,32 +1315,42 @@ body[data-side="nhagai"] .scroll_next_btn {
 }
 
 @keyframes chevronDownBounce {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(-1px);
     }
+
     50% {
         transform: translateY(2px);
     }
 }
-    transform: translateY(20px) scale(0.8);
-    pointer-events: none;
+
+transform: translateY(20px) scale(0.8);
+pointer-events: none;
 }
 
 @keyframes floatingBobRight {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-5px);
     }
 }
 
 @keyframes scrollTextGlowBright {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 0.85;
         transform: scale(0.98);
         color: #8c1e20;
     }
+
     50% {
         opacity: 1;
         transform: scale(1.03);
@@ -1439,25 +1487,25 @@ body[data-side="nhagai"] .scroll_next_btn {
         padding: 3.5px;
         border-radius: 8px;
     }
-    
+
     .card_photo_accent.pos_card2_top_left {
         top: 45px;
         left: -12px;
         transform: rotate(-8deg);
     }
-    
+
     .card_photo_accent.pos_card2_bottom_right {
         bottom: 50px;
         right: -12px;
         transform: rotate(7deg);
     }
-    
+
     .card_photo_accent.pos_card3_top_right {
         top: 50px;
         right: -12px;
         transform: rotate(-6deg);
     }
-    
+
     .card_photo_accent.pos_card3_bottom_left {
         bottom: 45px;
         left: -12px;
