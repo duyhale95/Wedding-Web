@@ -1034,7 +1034,7 @@ body[data-side="nhagai"] .thank_dot {
     border: 1.5px solid rgba(212, 175, 55, 0.75);
     border-radius: 30px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 15px rgba(212, 175, 55, 0.35);
-    transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
+    transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1), transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.4s ease;
     max-height: 82vh;
     user-select: none;
 }
@@ -1050,7 +1050,8 @@ body[data-side="nhagai"] .wedding_scroll_nav {
 .wedding_scroll_nav.hide_indicator {
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-50%) translateX(20px);
+    transform: translateY(-50%) translateX(22px);
+    pointer-events: none;
 }
 
 /* Vertical Progress Bar Track Line */

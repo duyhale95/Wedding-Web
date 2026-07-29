@@ -411,20 +411,48 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (fixedIndicator) {
+        let scrollHideTimeout = null;
+        let isUserInteractingWithNav = false;
+
+        // Function to show scroll indicator
+        function showScrollIndicator() {
+            if (envelopeOverlay && !envelopeOverlay.classList.contains('opened') && envelopeOverlay.style.display !== 'none') {
+                return; // Envelope is still closed
+            }
+            fixedIndicator.classList.remove('hide_indicator');
+        }
+
+        // Function to hide scroll indicator after delay when idle
+        function hideScrollIndicator(delay = 1600) {
+            if (scrollHideTimeout) clearTimeout(scrollHideTimeout);
+            scrollHideTimeout = setTimeout(() => {
+                if (!isUserInteractingWithNav) {
+                    fixedIndicator.classList.add('hide_indicator');
+                }
+            }, delay);
+        }
+
         // If envelope overlay is present and not opened, hide fixed indicator initially
         if (envelopeOverlay && !envelopeOverlay.classList.contains('opened')) {
             fixedIndicator.style.display = 'none';
+            fixedIndicator.classList.add('hide_indicator');
+        } else {
+            // Initially show briefly then hide if envelope is already opened
+            showScrollIndicator();
+            hideScrollIndicator(2500);
         }
 
         // Show fixed indicator when envelope is opened
         const btnOpenEnvelope = document.getElementById('btnOpenEnvelope');
         const envelopeActionWrapper = document.querySelector('.envelope_action_wrapper');
-        const showFixedIndicator = () => {
+        const onOpenEnvelope = () => {
             fixedIndicator.style.display = 'flex';
+            showScrollIndicator();
             updateScrollProgress();
+            hideScrollIndicator(2500);
         };
-        if (btnOpenEnvelope) btnOpenEnvelope.addEventListener('click', showFixedIndicator);
-        if (envelopeActionWrapper) envelopeActionWrapper.addEventListener('click', showFixedIndicator);
+        if (btnOpenEnvelope) btnOpenEnvelope.addEventListener('click', onOpenEnvelope);
+        if (envelopeActionWrapper) envelopeActionWrapper.addEventListener('click', onOpenEnvelope);
 
         // Click on section node to scroll smoothly to target element
         scrollNodes.forEach(node => {
@@ -447,6 +475,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.scrollBy({ top: window.innerHeight * 0.75, behavior: 'smooth' });
             });
         }
+
+        // Keep nav visible while user hovers or touches the indicator directly
+        fixedIndicator.addEventListener('mouseenter', () => {
+            isUserInteractingWithNav = true;
+            showScrollIndicator();
+            if (scrollHideTimeout) clearTimeout(scrollHideTimeout);
+        });
+
+        fixedIndicator.addEventListener('mouseleave', () => {
+            isUserInteractingWithNav = false;
+            hideScrollIndicator(1200);
+        });
+
+        fixedIndicator.addEventListener('touchstart', () => {
+            isUserInteractingWithNav = true;
+            showScrollIndicator();
+            if (scrollHideTimeout) clearTimeout(scrollHideTimeout);
+        }, { passive: true });
+
+        fixedIndicator.addEventListener('touchend', () => {
+            isUserInteractingWithNav = false;
+            hideScrollIndicator(1600);
+        }, { passive: true });
 
         // Scroll progress calculation & active section detection
         function updateScrollProgress() {
@@ -478,17 +529,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentActiveNode.classList.add('active');
             }
 
-            // Hide/dim at bottom of page
+            // Hide at bottom of page or schedule auto-hide when idle
             const scrollPosition = scrollTop + window.innerHeight;
             const totalHeight = document.documentElement.scrollHeight;
             if (scrollPosition >= totalHeight - 50) {
                 fixedIndicator.classList.add('hide_indicator');
             } else {
-                fixedIndicator.classList.remove('hide_indicator');
+                showScrollIndicator();
+                hideScrollIndicator(1600);
             }
         }
 
         window.addEventListener('scroll', updateScrollProgress, { passive: true });
+        window.addEventListener('touchmove', updateScrollProgress, { passive: true });
         updateScrollProgress();
     }
 });
