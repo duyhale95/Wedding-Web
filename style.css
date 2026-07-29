@@ -307,20 +307,20 @@ body[data-side="nhagai"] .gold_dot {
 
 .padding_hour,
 .padding_day {
-    font-family: "Montserrat", sans-serif;
-    font-size: clamp(12px, 3.6vw, 14.5px);
-    letter-spacing: 2px;
+    font-family: "Noto Serif Display", serif;
+    font-size: clamp(13px, 3.8vw, 15.5px);
+    letter-spacing: 3px;
     font-weight: 700;
     white-space: nowrap;
     display: inline-block;
     text-align: center;
-    color: #761618;
+    color: #594233;
     text-shadow: none;
 }
 
 body[data-side="nhagai"] .padding_hour,
 body[data-side="nhagai"] .padding_day {
-    color: #b8525b;
+    color: #7a3239;
     text-shadow: none;
 }
 
