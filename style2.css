@@ -1013,86 +1013,276 @@ body[data-side="nhagai"] .thank_dot {
     }
 }
 
-/* Floating Mobile Scroll Circle Button on Bottom Right (Nằm nhỏ xinh bên phải) */
-.fixed_scroll_indicator {
+/* ==========================================================================
+   VERTICAL WEDDING SCROLL TRACK & LANDMARK NAVIGATION (Thanh cuộn dài & mốc họa tiết)
+   ========================================================================== */
+.fixed_scroll_indicator,
+.wedding_scroll_nav {
     position: fixed;
-    bottom: 22px;
-    right: 18px;
-    left: auto;
-    transform: none;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
     z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    padding: 0;
-    background: linear-gradient(135deg, rgba(255, 252, 245, 0.96) 0%, rgba(255, 244, 230, 0.98) 100%);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1.5px solid #d4af37;
-    border-radius: 50%;
-    box-shadow: 0 4px 18px rgba(140, 30, 32, 0.25), 0 0 12px rgba(212, 175, 55, 0.4);
-    cursor: pointer;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
-    transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease, box-shadow 0.35s ease;
-    animation: floatingBobRight 2.4s infinite ease-in-out;
-}
-
-.fixed_scroll_indicator:hover,
-.fixed_scroll_indicator:active {
-    transform: scale(1.1);
-    box-shadow: 0 6px 24px rgba(140, 30, 32, 0.35), 0 0 18px rgba(212, 175, 55, 0.6);
-}
-
-.fixed_scroll_indicator .scroll_down_chevron_box {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    margin-top: 0;
-    height: 24px;
-    position: relative;
+    justify-content: space-between;
+    padding: 12px 5px;
+    background: rgba(255, 252, 245, 0.82);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    backdrop-filter: blur(12px) saturate(160%);
+    border: 1.5px solid rgba(212, 175, 55, 0.75);
+    border-radius: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 15px rgba(212, 175, 55, 0.35);
+    transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
+    max-height: 82vh;
+    user-select: none;
 }
 
-.fixed_scroll_indicator .chevron_down {
-    width: 17px;
-    height: 17px;
-    stroke: #8c1e20;
-    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
-    animation: chevronCascadingSmall 1.5s infinite cubic-bezier(0.4, 0, 0.6, 1);
+body[data-side="nhagai"] .fixed_scroll_indicator,
+body[data-side="nhagai"] .wedding_scroll_nav {
+    background: rgba(255, 245, 247, 0.85);
+    border-color: rgba(217, 119, 127, 0.8);
+    box-shadow: 0 8px 32px rgba(217, 119, 127, 0.22), 0 0 15px rgba(217, 119, 127, 0.3);
 }
 
-.fixed_scroll_indicator .chevron_down.c1 {
-    margin-bottom: -10px;
-    animation-delay: 0s;
-}
-
-.fixed_scroll_indicator .chevron_down.c2 {
-    animation-delay: 0.35s;
-    opacity: 0.75;
-}
-
-@keyframes chevronCascadingSmall {
-    0% {
-        transform: translateY(-2px) scale(0.9);
-        opacity: 0.3;
-    }
-    50% {
-        transform: translateY(3px) scale(1.08);
-        opacity: 1;
-        stroke: #c92a2e;
-    }
-    100% {
-        transform: translateY(7px) scale(0.9);
-        opacity: 0.15;
-    }
-}
-
-.fixed_scroll_indicator.hide_indicator {
+.fixed_scroll_indicator.hide_indicator,
+.wedding_scroll_nav.hide_indicator {
     opacity: 0;
     visibility: hidden;
+    transform: translateY(-50%) translateX(20px);
+}
+
+/* Vertical Progress Bar Track Line */
+.scroll_track_bg {
+    position: absolute;
+    top: 36px;
+    bottom: 42px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    background: rgba(212, 175, 55, 0.25);
+    border-radius: 3px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+body[data-side="nhagai"] .scroll_track_bg {
+    background: rgba(217, 119, 127, 0.28);
+}
+
+.scroll_progress_bar {
+    width: 100%;
+    height: 0%;
+    background: linear-gradient(to bottom, #d4af37 0%, #b8860b 100%);
+    border-radius: 3px;
+    transition: height 0.15s ease-out;
+    box-shadow: 0 0 8px rgba(212, 175, 55, 0.8);
+}
+
+body[data-side="nhagai"] .scroll_progress_bar {
+    background: linear-gradient(to bottom, #d9777f 0%, #b8525b 100%);
+    box-shadow: 0 0 8px rgba(217, 119, 127, 0.8);
+}
+
+/* Scroll Nodes Wrapper */
+.scroll_nodes_wrapper {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin: 6px 0;
+}
+
+.scroll_node {
+    position: relative;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border-radius: 50%;
+    transition: all 0.25s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.scroll_node .node_dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #d4af37;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 6px rgba(212, 175, 55, 0.6);
+}
+
+body[data-side="nhagai"] .scroll_node .node_dot {
+    background: #d9777f;
+    box-shadow: 0 0 6px rgba(217, 119, 127, 0.6);
+}
+
+.scroll_node .node_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    color: #761618;
+    opacity: 0.85;
+    transform: scale(0.9);
+    transition: all 0.3s ease;
+    line-height: 1;
+}
+
+body[data-side="nhagai"] .scroll_node .node_icon {
+    color: #7a3239;
+}
+
+.scroll_node .node_svg_icon {
+    width: 15px;
+    height: 15px;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    fill: none;
+    transition: all 0.3s ease;
+}
+
+.scroll_node:hover .node_icon,
+.scroll_node.active .node_icon {
+    opacity: 1;
+    transform: scale(1.25);
+    color: #a22a2d;
+}
+
+body[data-side="nhagai"] .scroll_node:hover .node_icon,
+body[data-side="nhagai"] .scroll_node.active .node_icon {
+    color: #b8525b;
+}
+
+.scroll_node:hover .node_svg_icon,
+.scroll_node.active .node_svg_icon {
+    filter: drop-shadow(0 1px 4px rgba(212, 175, 55, 0.7));
+}
+
+body[data-side="nhagai"] .scroll_node:hover .node_svg_icon,
+body[data-side="nhagai"] .scroll_node.active .node_svg_icon {
+    filter: drop-shadow(0 1px 4px rgba(217, 119, 127, 0.7));
+}
+
+.scroll_node.active .node_dot {
+    width: 24px;
+    height: 24px;
+    background: rgba(212, 175, 55, 0.25);
+    border: 1.5px solid #d4af37;
+    animation: pulseRing 1.8s infinite ease-in-out;
+}
+
+body[data-side="nhagai"] .scroll_node.active .node_dot {
+    background: rgba(217, 119, 127, 0.25);
+    border-color: #d9777f;
+}
+
+@keyframes pulseRing {
+    0% {
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.6);
+    }
+    70% {
+        box-shadow: 0 0 0 8px rgba(212, 175, 55, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+    }
+}
+
+/* Tooltip Labels */
+.scroll_node .node_tooltip {
+    position: absolute;
+    right: 38px;
+    top: 50%;
+    transform: translateY(-50%) translateX(8px);
+    background: rgba(35, 25, 18, 0.92);
+    color: #f7e2bd;
+    font-family: "Noto Serif Display", serif;
+    font-size: 11.5px;
+    font-weight: 600;
+    white-space: nowrap;
+    padding: 5px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(212, 175, 55, 0.65);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    letter-spacing: 0.5px;
+}
+
+body[data-side="nhagai"] .scroll_node .node_tooltip {
+    background: rgba(45, 20, 25, 0.92);
+    color: #fce2e6;
+    border-color: rgba(217, 119, 127, 0.65);
+}
+
+.scroll_node:hover .node_tooltip,
+.scroll_node.active:hover .node_tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) translateX(0);
+}
+
+/* Bottom Scroll Next Button */
+.scroll_next_btn {
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(135deg, #a22a2d 0%, #761618 100%);
+    border: 1px solid #d4af37;
+    color: #ffffff;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-top: 4px;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+    outline: none;
+    padding: 0;
+}
+
+body[data-side="nhagai"] .scroll_next_btn {
+    background: linear-gradient(135deg, #b8525b 0%, #7a3239 100%);
+    border-color: #d9777f;
+}
+
+.scroll_next_btn:hover,
+.scroll_next_btn:active {
+    transform: scale(1.15);
+}
+
+.scroll_next_btn .chevron_down {
+    width: 14px;
+    height: 14px;
+    stroke: #ffffff;
+    animation: chevronDownBounce 1.5s infinite ease-in-out;
+}
+
+@keyframes chevronDownBounce {
+    0%, 100% {
+        transform: translateY(-1px);
+    }
+    50% {
+        transform: translateY(2px);
+    }
+}
     transform: translateY(20px) scale(0.8);
     pointer-events: none;
 }

@@ -392,11 +392,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Smooth scroll and floating scroll indicator logic
+// Smooth scroll and vertical wedding scroll track navigation logic
 document.addEventListener('DOMContentLoaded', () => {
     const scrollDownHint = document.getElementById('scrollDownHint');
     const fixedIndicator = document.getElementById('fixedScrollIndicator');
     const envelopeOverlay = document.getElementById('envelopeOverlay');
+    const scrollProgressBar = document.getElementById('scrollProgressBar');
+    const scrollNodes = document.querySelectorAll('.scroll_node');
+    const btnScrollNext = document.getElementById('btnScrollNext');
 
     if (scrollDownHint) {
         scrollDownHint.addEventListener('click', () => {
@@ -418,25 +421,75 @@ document.addEventListener('DOMContentLoaded', () => {
         const envelopeActionWrapper = document.querySelector('.envelope_action_wrapper');
         const showFixedIndicator = () => {
             fixedIndicator.style.display = 'flex';
+            updateScrollProgress();
         };
         if (btnOpenEnvelope) btnOpenEnvelope.addEventListener('click', showFixedIndicator);
         if (envelopeActionWrapper) envelopeActionWrapper.addEventListener('click', showFixedIndicator);
 
-        // Click on floating indicator to scroll down 75% screen height
-        fixedIndicator.addEventListener('click', () => {
-            window.scrollBy({ top: window.innerHeight * 0.75, behavior: 'smooth' });
+        // Click on section node to scroll smoothly to target element
+        scrollNodes.forEach(node => {
+            node.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const selector = node.getAttribute('data-target');
+                if (selector) {
+                    const targetEl = document.querySelector(selector);
+                    if (targetEl) {
+                        targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                }
+            });
         });
 
-        // Hide floating indicator when user scrolls near the bottom of the page
-        window.addEventListener('scroll', () => {
-            const scrollPosition = window.scrollY + window.innerHeight;
+        // Click on next arrow button to scroll down 75% height
+        if (btnScrollNext) {
+            btnScrollNext.addEventListener('click', (e) => {
+                e.stopPropagation();
+                window.scrollBy({ top: window.innerHeight * 0.75, behavior: 'smooth' });
+            });
+        }
+
+        // Scroll progress calculation & active section detection
+        function updateScrollProgress() {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = docHeight > 0 ? Math.min(100, Math.max(0, (scrollTop / docHeight) * 100)) : 0;
+
+            if (scrollProgressBar) {
+                scrollProgressBar.style.height = scrollPercent + '%';
+            }
+
+            // Find current active section based on scroll offset
+            let currentActiveNode = null;
+            scrollNodes.forEach(node => {
+                const selector = node.getAttribute('data-target');
+                if (selector) {
+                    const targetEl = document.querySelector(selector);
+                    if (targetEl) {
+                        const rect = targetEl.getBoundingClientRect();
+                        if (rect.top <= window.innerHeight * 0.55 && rect.bottom >= window.innerHeight * 0.15) {
+                            currentActiveNode = node;
+                        }
+                    }
+                }
+            });
+
+            if (currentActiveNode) {
+                scrollNodes.forEach(n => n.classList.remove('active'));
+                currentActiveNode.classList.add('active');
+            }
+
+            // Hide/dim at bottom of page
+            const scrollPosition = scrollTop + window.innerHeight;
             const totalHeight = document.documentElement.scrollHeight;
-            if (scrollPosition >= totalHeight - 200) {
+            if (scrollPosition >= totalHeight - 50) {
                 fixedIndicator.classList.add('hide_indicator');
             } else {
                 fixedIndicator.classList.remove('hide_indicator');
             }
-        });
+        }
+
+        window.addEventListener('scroll', updateScrollProgress, { passive: true });
+        updateScrollProgress();
     }
 });
 
