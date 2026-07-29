@@ -388,7 +388,7 @@ body[data-side="nhagai"] .thiep_date_box {
 }
 
 body[data-side="nhagai"] .gold_dash {
-    color: #e5526b;
+    color: #e88b9a;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
 }
 
@@ -400,7 +400,7 @@ body[data-side="nhagai"] .gold_dash {
 }
 
 body[data-side="nhagai"] .gold_dot {
-    color: #e5526b;
+    color: #e88b9a;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
 }
 
@@ -419,7 +419,7 @@ body[data-side="nhagai"] .gold_dot {
 
 body[data-side="nhagai"] .padding_hour,
 body[data-side="nhagai"] .padding_day {
-    color: #f5829b;
+    color: #f8b4c0;
     text-shadow: 0 3px 12px rgba(0, 0, 0, 0.98), 0 0 8px rgba(0, 0, 0, 0.85);
 }
 
@@ -435,7 +435,7 @@ body[data-side="nhagai"] .padding_day {
 }
 
 body[data-side="nhagai"] .thiep_main_date {
-    color: #fce2e6;
+    color: #f8b4c0;
     text-shadow: 0 4px 18px rgba(0, 0, 0, 0.95);
 }
 
@@ -452,7 +452,7 @@ body[data-side="nhagai"] .thiep_main_date {
 }
 
 body[data-side="nhagai"] .thiep_month_year {
-    color: #f5829b;
+    color: #f8b4c0;
     text-shadow: 0 3px 12px rgba(0, 0, 0, 0.98), 0 0 8px rgba(0, 0, 0, 0.85);
 }
 

@@ -423,7 +423,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Function to hide scroll indicator after delay when idle
-        function hideScrollIndicator(delay = 1600) {
+        function hideScrollIndicator(delay = 800) {
             if (scrollHideTimeout) clearTimeout(scrollHideTimeout);
             scrollHideTimeout = setTimeout(() => {
                 if (!isUserInteractingWithNav) {
@@ -439,7 +439,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             // Initially show briefly then hide if envelope is already opened
             showScrollIndicator();
-            hideScrollIndicator(2500);
+            hideScrollIndicator(1500);
         }
 
         // Show fixed indicator when envelope is opened
@@ -449,7 +449,7 @@ document.addEventListener('DOMContentLoaded', () => {
             fixedIndicator.style.display = 'flex';
             showScrollIndicator();
             updateScrollProgress();
-            hideScrollIndicator(2500);
+            hideScrollIndicator(1500);
         };
         if (btnOpenEnvelope) btnOpenEnvelope.addEventListener('click', onOpenEnvelope);
         if (envelopeActionWrapper) envelopeActionWrapper.addEventListener('click', onOpenEnvelope);
@@ -485,7 +485,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         fixedIndicator.addEventListener('mouseleave', () => {
             isUserInteractingWithNav = false;
-            hideScrollIndicator(1200);
+            hideScrollIndicator(500);
         });
 
         fixedIndicator.addEventListener('touchstart', () => {
@@ -496,7 +496,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         fixedIndicator.addEventListener('touchend', () => {
             isUserInteractingWithNav = false;
-            hideScrollIndicator(1600);
+            hideScrollIndicator(800);
         }, { passive: true });
 
         // Scroll progress calculation & active section detection
@@ -536,7 +536,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 fixedIndicator.classList.add('hide_indicator');
             } else {
                 showScrollIndicator();
-                hideScrollIndicator(1600);
+                hideScrollIndicator(800);
             }
         }
 
